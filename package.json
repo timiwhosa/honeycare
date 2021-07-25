@@ -1,0 +1,21 @@
+{
+  "name": "honeycare",
+  "version": "1.0.0",
+  "description": "online pharmacy Drug sale",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "moment": "^2.24.0",
+    "mongodb": "^3.5.5",
+    "multer": "^1.4.2",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "ifotim",
+  "license": "ISC"
+}
