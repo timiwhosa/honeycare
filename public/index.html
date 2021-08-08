@@ -10,21 +10,46 @@
   <body>
     <nav>
       <div class="nav-ctn">
-        <div class="brand-name">
-          <span class="green1"> Honeycare </span> 
-          <span class="blue1"> Pharmacy and Beauty Hub </span>
-        </div>
+        <a href="/">
+          <div class="brand-name">
+            <span class="green1"> Honeycare </span> 
+            <span class="blue1"> Pharmacy and Beauty Hub </span>
+          </div>
+        </a>
         <div class="brand-logo">
-          <img
+          <a href="/">
+            <img
             src="/img/logo/logo.png"
             alt="Honeycare pharmacy and Beauty Hub Logo"
           />
+          </a>
         </div>
-        <div class="nav-extra">
+        <div class="flex">
+            <div class="search-div">
+                    <label class="search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="31.042" height="28.512" viewBox="0 0 31.042 28.512">
+                            <g id="Group_118" data-name="Group 118" transform="translate(1.5 1.5)">
+                                <path id="Path_1" data-name="Path 1" d="M25.816,14.119c0,5.313-4.772,9.619-10.658,9.619S4.5,19.432,4.5,14.119,9.272,4.5,15.158,4.5,25.816,8.807,25.816,14.119Z" transform="translate(-4.5 -4.5)" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                <path id="Path_2" data-name="Path 2" d="M34.148,33.5l-9.173-8.53" transform="translate(-6.727 -8.613)" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                            </g>
+                        </svg>
+                    </label>
+                    <input type="search" placeholder="Cosmetics, Drugs ">
+
+                </div>
+        <a href="/cart">
+          <div class="nav-extra">
             <label for="cart" class="bg-green1" id="cart-notice">1</label>
           <img src="/img/icons/Icon feather-shopping-cart.png" alt="" />
         </div>
-      </div>
+        </a>
+        </div>
+                
+            <!-- </div> -->
+            </div>
+            <div class="float">
+                    <input type="search" placeholder="Cosmetics, Drugs" >
+            </div>
     </nav>
     <section class="width">
       <div class="header">
@@ -66,7 +91,7 @@
               <div class="cta-text">
                   Not Feeling Well? <br> Talk to a Pharmacist For Free.
               </div>
-              <button type=""  class="btn bg-blue1">Connect Me</button>
+              <button type=""  class="btn bg-blue1" onclick="contact()">Connect Me</button>
           </div>
       </div>
 
@@ -77,8 +102,8 @@
 
       <div class="popular">
           <h3 class="green1">Popular Products</h3>
-          <div class="scroll-section">
-              <div class="product">
+          <div class="scroll-section" id="popular-div">
+              <!-- <div class="product">
                 <a href="/product/health/category/singleproduct/productName">
                     <div class="product-img">
                           <img src="/img/product/allproducts/product1.png" alt="honeycare pharmacy fluvic acid">
@@ -119,7 +144,7 @@
                   <div class="addtocart-btn btn bg-green1">
                       <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
                   </div>
-              </div>
+              </div> -->
           </div>
       </div>
 
@@ -232,47 +257,139 @@
       <div class="contact">
           <h3 class="green1 center">Talk to Us</h3>
           <div class="social-contact">
-              <div class="">
+              <a href="/instagram">
+                <div class="">
                   <img src="/img/social/instagram.png" alt="">
-                  instagram
-              </div>
-              <div class="">
+                  <!-- instagram -->
+                </div>
+              </a>
+              <a href="/contact">
+                <div class="">
                   <img src="/img/social/whatsapp.png" alt="">
-                  Whatsapp
-              </div>
-              <div class="">
+                  <!-- Whatsapp -->
+                </div>
+              </a>
+              <a href="tel:+2348071360049">
+                <div class="">
                   <img src="/img/social/call.png" alt="">
-                  Phone
-              </div>
+                  <!-- Phone -->
+                </div>
+              </a>
           </div>
           <p class="center">OR</p>
           <div class="form">
-              <form action="">
+              <form action="" id="contact-form">
                   <label for="name">Name</label>
-                  <input type="text" name="" id="name" placeholder="For better Communication" required>
+                  <input type="text"  name="" id="name" placeholder="For better Communication" required>
                   <label for="Phone">Phone Number</label>
-                  <input type="number" name="" id="phone" placeholder="So that we can Reach you" required>
+                  <input type="number"  maxlength="15" minlength="10" name="" id="phone" placeholder="So that we can Reach you" required>
                   <label for="name">Your Message</label>
-                  <textarea name="" id="message" cols="30" rows="6" placeholder="Talk to us" required></textarea>
+                  <textarea maxlength="1000" value="llooog" name="" id="message" cols="30" rows="6" placeholder="Talk to us" required></textarea>
                   <button type="submit" class="bg-green1 btn">Send Message</button>
               </form>
               <img src="/img/advise/advise2.png" alt="">
         </div>
       </div>
+
       <footer>
-            <ul>
-                <li><a href="/contact">Contact Us</a></li>
-                <li><a href="/contact">Terms and conditions</a></li>
-                <li><a href="/contact">Privacy policy</a></li>
-            </ul>
-            <p>Copyright Honeycare</p>
-        </footer>
+          <ul>
+              <li><a href="/contact">Contact Us</a></li>
+              <li><a href="/terms">Terms and conditions</a></li>
+              <li><a href="/privacy">Privacy policy</a></li>
+          </ul>
+          <p>Copyright Honeycare</p>
+      </footer>
     </section>
 
     <script>
+      String.prototype.escape = function () {
+            var tagtoreplace = {
+                "&": "&amp;",
+                "<": "&lt",
+                ">": "&gt",
+                "=": "",
+                "script": " ",
+                "Script": " ",
+                '"': " ",
+                "`": " "
+            };
+            return this.replace(/[&<>`=]/g, function (tag) {
+                return tagtoreplace[tag] || tag;
+            });
+        }
+
       function refill(){
         window.location.href = "/refill"
       }
+      function contact(){
+        window.location.href = "/contact"
+      }
+
+      function getpopular(data){
+        var popular = document.getElementById("popular-div");
+        if(data){
+          data.forEach(product=>{
+            var hh = JSON.stringify(product)
+            popular.innerHTML +=
+              `
+                <div class="product">
+                <a href="/product/${product.section}/${product.category}/${product.subcategory}/singleproduct/${product.id}">
+                    <div class="product-img">
+                          <img src="${product.image}" alt="honeycare pharmacy ${product.name}">
+                    </div>
+                  <div class="product-name">
+                      ${product.name}
+                  </div>
+                  <div class="product-price price">${product.price}</div>
+                </a>
+                  <div class="addtocart-btn btn bg-green1" onclick='addtocart(${hh})'>
+                      <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
+                  </div>
+              </div>
+              `
+          })
+        }
+      }
+      
+
+      fetch("/popular").then(res=> {return res.json()})
+      .then(data=> {getpopular(data)})
+      .catch(err=>{console.error(err)});
+
+      
+      document.getElementById("contact-form").addEventListener("submit", contactus)
+      
+      function contactus(e){
+        e.preventDefault();
+        console.log(e)
+        var name = e.target[0].value.escape();
+        var number = e.target[1].value;
+        var message = e.target[2].value.escape();
+
+        if(name.trim().length > 4){
+          if(number.trim().length> 9 && number.trim().length< 16){
+              if(message.trim().length> 5){
+                var data = {name, number,message};
+                fetch("/contact", {
+                  method: "POST",
+                  headers: {"Content-Type": "application/json"},
+                  body: JSON.stringify(data)
+                }).then(res=> res.json()).then(message=> {alert(message.message); document.getElementById("contact-form").reset()})
+                .catch(err=>{console.error(err)});
+            }
+            else{
+              alert("Lets hear from you, Pls speak your mind")
+            }
+          }
+          else{
+            alert("Your Details are Private, pls enter a valid phone number ")
+          }
+        }else{
+          alert("pls enter a valid name")
+        }
+      }
     </script>
+
+    <script src="/js/general.js"></script>
   </body>
 </html>

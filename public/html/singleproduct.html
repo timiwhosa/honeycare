@@ -11,21 +11,46 @@
   <body>
     <nav>
       <div class="nav-ctn">
-        <div class="brand-name">
-          <span class="green1"> Honeycare </span> 
-          <span class="blue1"> Pharmacy and Beauty Hub </span>
-        </div>
+        <a href="/">
+          <div class="brand-name">
+            <span class="green1"> Honeycare </span> 
+            <span class="blue1"> Pharmacy and Beauty Hub </span>
+          </div>
+        </a>
         <div class="brand-logo">
-          <img
+          <a href="/">
+            <img
             src="/img/logo/logo.png"
             alt="Honeycare pharmacy and Beauty Hub Logo"
           />
+          </a>
         </div>
-        <div class="nav-extra">
+        <div class="flex">
+            <div class="search-div">
+                    <label class="search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="31.042" height="28.512" viewBox="0 0 31.042 28.512">
+                            <g id="Group_118" data-name="Group 118" transform="translate(1.5 1.5)">
+                                <path id="Path_1" data-name="Path 1" d="M25.816,14.119c0,5.313-4.772,9.619-10.658,9.619S4.5,19.432,4.5,14.119,9.272,4.5,15.158,4.5,25.816,8.807,25.816,14.119Z" transform="translate(-4.5 -4.5)" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                <path id="Path_2" data-name="Path 2" d="M34.148,33.5l-9.173-8.53" transform="translate(-6.727 -8.613)" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                            </g>
+                        </svg>
+                    </label>
+                    <input type="search" placeholder="Cosmetics, Drugs ">
+
+                </div>
+        <a href="/cart">
+          <div class="nav-extra">
             <label for="cart" class="bg-green1" id="cart-notice">1</label>
           <img src="/img/icons/Icon feather-shopping-cart.png" alt="" />
         </div>
-      </div>
+        </a>
+        </div>
+                
+            <!-- </div> -->
+            </div>
+            <div class="float">
+                    <input type="search" placeholder="Cosmetics, Drugs" >
+            </div>
     </nav>
     <div class="section width">
       <div class="main-singleproduct">
@@ -57,11 +82,21 @@
                 </div>
                 <div class="addtocart">
                     <div class="qnty">
-                      <span class="minus">-</span>
-                      <input type="number" value="2" />
-                      <span class="add">+</span>
+                      <span class="minus" onclick = "itemQuantity('decrease')">-</span>
+                      <input type="number" value="1" id ="singlenumber"/>
+                      <span class="add" onclick = "itemQuantity('increase')">+</span>
                     </div>
-                    <div class="btn btn-primary">Add to cart</div>
+                    <div class="btn btn-primary" onclick= 'addsingletocart({
+  "id": 4,
+  "name": "Fluvic Acid",
+  "description":
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, modi?",
+  image: "/img/product/allproducts/product1.png",
+  price: 10000,
+  category: "health",
+  subcategory: "Vitamins",
+  section: "health",
+})'>Add to cart</div>
                     <!-- <div class="favourite">whatsapp</div>
                     <div class="favourite">Share</div> -->
                 </div>
@@ -72,7 +107,7 @@
             <div class="singleproduct-details">
               <div class="details">
                 <div class="accordion active-accordion">
-                  <div class="head"><span>Reach us</span> <span>-</span></div>
+                  <div class="head" onclick="accordion(this)"><span>Reach us</span> <span>+</span></div>
                   <div class="content">
                     <ul>
                       <li><a href="">whatsapp 0905553434</a></li>
@@ -81,7 +116,7 @@
                   </div>
                 </div>
                 <div class="accordion">
-                  <div class="head">
+                  <div class="head" onclick="accordion(this)">
                     <span>Ingredients</span> <span>+</span>
                   </div>
                   <div class="content">
@@ -91,7 +126,7 @@
                   </div>
                 </div>
                 <div class="accordion">
-                  <div class="head"><span>Uses</span> <span>+</span></div>
+                  <div class="head" onclick="accordion(this)"><span>Uses</span> <span>+</span></div>
                   <div class="content">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Repellendus maiores animi non. Quas vel amet explicabo
@@ -154,15 +189,26 @@
           </div>      
         </div>
     <footer>
-        <ul>
-            <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/contact">Terms and conditions</a></li>
-            <li><a href="/contact">Privacy policy</a></li>
-        </ul>
-        <p>Copyright Honeycare</p>
-    </footer>
+          <ul>
+              <li><a href="/contact">Contact Us</a></li>
+              <li><a href="/terms">Terms and conditions</a></li>
+              <li><a href="/privacy">Privacy policy</a></li>
+          </ul>
+          <p>Copyright Honeycare</p>
+      </footer>
     </div>
 
+
+    <script>
+      async function accordion(position){
+        var y = position.parentElement.parentElement.children;
+        for(i=0; i<y.length; i++){ 
+          y[i].classList.remove("active-accordion")
+        }
+        position.parentElement.classList.add("active-accordion")
+      }
+    </script>
+    <script src="/js/general.js"></script>
 
   </body>
 </html>
