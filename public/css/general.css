@@ -110,7 +110,7 @@ h3{
     border-radius: 200px;
     box-shadow: 5px 5px 10px var(--box-shadow), 5px 5px 10px #026fbb14, -5px 5px 10px #16c09b1f;
     width: fit-content;
-    padding: 20px;
+    padding: 2vw;
     font-weight: 600;
     cursor: pointer;
 }
