@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <link rel="stylesheet" href="/admin/style.css">
+</head>
+<body>
+    <section>
+        <div class="left">
+            <div class="left-top">
+                <div class="head">
+                    <div class="head-ctn">
+                        <img loading="lazy" src="/img/logo/logo.png" alt="">
+                        <span>Honeycare</span>
+                    </div>
+                </div>
+                <div class="dashb-sections active" data-target="request" onclick="section(this.dataset.target)">
+                    <span>Orders</span>
+                </div>
+                <div class="dashb-sections " data-target="statistics" onclick="section(this.dataset.target)">
+                    <span>Statistics</span>
+                </div>
+                <div class="dashb-sections " data-target="products" onclick="section(this.dataset.target)">
+                    <span>Products</span>
+                </div>
+                <div class="dashb-sections " data-target="new-category" onclick="section(this.dataset.target)">
+                    <span>New Category</span>
+                </div>
+            </div>
+            <div class="setting dashb-sections" data-target="settings" onclick="section(this.dataset.target)">
+                settings
+            </div>
+
+        </div>
+        <div class="right">
+            <div id="request" class="ctn active">
+                <div class="tab">
+                    <span data-target="request-products" onclick="tab(this)">Product</span>
+                    <span data-target="refills" onclick="tab(this)">Refill</span>
+                    <div class="indicator"></div>
+                </div>
+                <div class="flex">
+                        <h3 class="center">Click on each order to view Full details</h3>
+                        <div class="flex">
+                            <button class="bg-dblue white" onclick="fetchOrder('recent')">Recent</button> 
+                            <button class="bg-dgreen white" onclick="fetchOrder('delivered')">Delivered</button>
+                        </div>
+                </div>
+                <section>
+                    <div class="request-products" id="request-products">
+                        
+                    </div>
+                        <div class="refills" id="refills">
+                        </div>
+
+                    </section>
+            </div>
+            <div id="statistics" class="ctn ">
+                <ul>
+                    <li>
+                        <span>Page: home</span>
+                        <span>Views: 500</span>
+                    </li>
+                </ul>
+            </div>
+            <div id="products" class="ctn ">
+                <div class="tab">
+                    <span data-target="products-product" onclick="tab(this)">Product</span>
+                    <span data-target="upload" onclick="tab(this)">Upload</span>
+                    <div class="indicator"></div>
+                </div>
+                <div class=""></div>
+                <section>
+                   <div class="products-product" id="products-product">
+                       <div class="products-product-left">
+                           <div class="prod">
+                                <img loading="lazy" src="/img/product/allproducts/product4.png" alt="">
+                                <div class="">
+                                    <ul>
+                                        <li class="name">Fluvic Acid</li>
+                                        <li>5000</li>
+                                    </ul>
+                                </div>
+                            </div>
+                           <div class="prod">
+                                <img loading="lazy" src="/img/product/allproducts/product4.png" alt="">
+                                <div class="">
+                                    <ul>
+                                        <li class="name">Fluvic Acid</li>
+                                        <li>5000</li>
+                                    </ul>
+                                </div>
+                            </div>
+                           <div class="prod">
+                                <img loading="lazy" src="/img/product/allproducts/product4.png" alt="">
+                                <div class="">
+                                    <ul>
+                                        <li class="name">Fluvic Acid</li>
+                                        <li>5000</li>
+                                    </ul>
+                                </div>
+                            </div>
+                       </div>
+                       <div class="products-product-category">
+                           <h3>Categories</h3>
+                           <div class="cat">
+                               <div class="accordion active">
+                                    <div class="head">
+                                        Health and Vitamins
+                                    </div>
+                                    <div class="content">
+                                        <ul>
+                                            <li class="active">Vitamins</li>
+                                            <li>Proteins</li>
+                                            <li>Lorem</li>
+                                        </ul>
+                                    </div>
+                               </div>
+                               <div class="accordion">
+                                    <div class="head">
+                                        Health and Vitamins
+                                    </div>
+                                    <div class="content">
+                                        <ul>
+                                            <li>Vitamins</li>
+                                            <li>Proteins</li>
+                                            <li>Lorem</li>
+                                        </ul>
+                                    </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="upload" id="upload">
+                       <div class="upload-text">
+                            <form action="">
+                                <label for="product-name">Product name</label>
+                                <input type="text" name="" id="product-name" required placeholder="what is the product called">
+                                <label for="product-price">Price</label>
+                                <input type="number" name="" id="product-price" required placeholder="5,000">
+                                <label for="product-image">Product Image</label>
+                                <input type="file" name="product-image" id="product-image" required>
+                                <label for="category">Category</label>
+                                <select name="" id="category" required>
+                                    
+                                </select>
+                                <label for="subcategory">SubCategory</label>
+                                <select name="" id="subcategory" required>
+                                    
+                                </select>
+                                <label for="product-name">Description</label>
+                                <textarea name="" id="" cols="30" rows="5" required placeholder="product Description"></textarea>
+                                <label for="ingredients">Ingredients</label>
+                                <textarea name="" id="ingredients" cols="30" rows="5" required placeholder="Ingredients"></textarea>
+                                <label for="uses">Uses</label>
+                                <textarea name="" id="uses" cols="30" rows="5" required placeholder="Uses"></textarea>
+                                <div class="flex">
+                                    <button type="reset">Reset</button>
+                                    <button type="submit">Add Product</button>
+                                </div>
+                            </form>
+                       </div>
+                       <div class="upload-preview">
+
+                       </div>
+                   </div>
+                </section>
+            </div>
+            <div id="new-category" class="ctn ">
+                <div class="dummy"><span>HONEYCARE </span>PHARMACY</div>
+                <div class="dummy dm2"><span>AND BEAUTY HUB</span></div>
+                <!-- Edit category -->
+                <h2 class="center blue">Add category</h2>
+                <div class="grid-2">
+                    <form action="" id="new-category-form">
+                        <h3>New Category</h3>
+                        <label for="category">Category Name</label>
+                        <input type="text" name="categoryname" id="newcategoryname" required placeholder="category name">
+                    <div class="">
+                            <button type="reset">Reset</button>
+                            <button type="submit">Add Category</button>
+                        </div>
+                    </form>
+                    <form action="" id="new-subcategory">
+                        <h3>New Sub Category</h3>
+                        <label for="category">Category</label>
+                        <select name="" id="categoryfallunder" required>
+                            
+                            
+                        </select>
+                        <label for="newsubcategory">New Sub Category</label>
+                        <input type="text" name="subcategory" id="newsubcategory" required placeholder="subcategory">
+                    <div class="">
+                            <button type="reset">Reset</button>
+                            <button type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Edit category -->
+                <h2 class="center blue b">Edit category</h2>
+                <div class="grid-2">
+                    <form action="" id="edit-category">
+                        <h3>Edit Category</h3>
+                        <label for="category">Category name</label>
+                        <select name="" id="categorytoedit" required>
+                            
+                        </select>
+                        <label for="neweditcategory">New Name</label>
+                        <input type="text" name="category" id="neweditcategory" required placeholder="new category name">
+                    <div class="">
+                            <button type="reset">Reset</button>
+                            <button type="submit">Rename</button>
+                        </div>
+                    </form>
+                    <form action="" id="edit-subcategory">
+                        <h3>Edit Sub Category</h3>
+                        <label for="category">Category</label>
+                        <select name="" id="editcategory" required>
+                            
+                        </select>
+                        <label for="subcategory">SubCategory</label>
+                        <select name="" id="editsubcategory" required>
+                            
+                        </select>
+                        <label for="neweditsubcategory">Sub Category</label>
+                        <input type="text" name="subcategory" id="neweditsubcategory" required placeholder="subcategory">
+                    <div class="">
+                            <button type="reset">Reset</button>
+                            <button type="submit">Rename</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="settings" class="ctn">
+                <div class="dummy"><span>HONEYCARE </span>PHARMACY</div>
+                <div class="dummy dm2"><span>AND BEAUTY HUB</span></div>
+                            <form action="">
+                                <label for="username">UserName</label>
+                                <input type="text" name="username" id="username" required placeholder="Username">
+                                <label for="passsword">Current Password</label>
+                                <input type="password" name="" id="password" required placeholder="password">
+                                <label for="new-password">New Password</label>
+                                <input type="password" name="" id="new-password" required placeholder="New password">
+                               <div class="">
+                                    <button type="reset">Reset</button>
+                                    <button type="submit">Submit</button>
+                                </div>
+                            </form>
+            </div>
+            
+        </div>
+    </section>
+        <div class="cover"></div>
+    <div class="overlay">
+        <button type="submit" class="close">x</button>
+        <div class="overlay-content">
+            
+        </div>
+    </div>
+    <div class="message-show bg-dblue white" id="success"> item delivered</div>
+    <script src="/admin/adams.js"></script>
+</body>
+</html>

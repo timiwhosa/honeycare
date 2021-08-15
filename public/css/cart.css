@@ -1,5 +1,5 @@
 .grid-2{
-    grid-gap: 10px;
+    grid-gap: 5vw;
     grid-template-columns: 5fr 3fr;
     width: 100%;
 }
@@ -122,7 +122,9 @@ h2{
 .cart-bottom{
     min-height: 70px;
     align-items: flex-end;
-}.cart-bottom .bottom-left{
+    grid-template-areas: "btom-left btom-right ";
+}
+.cart-bottom .bottom-left{
     grid-area: btom-left;
 }
 .cart-bottom .bottom-right{
@@ -143,7 +145,99 @@ h2{
     margin-left: 10px;
 }
 
+.right{
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 40px 2vw;
+}
+.right h3{
+    color: var(--white2);
+}
+
+
+/* form */
+input[type=number]{
+    -moz-appearance: textfield;
+}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    display: none;
+    margin: 0;
+}
+label{
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--white2);
+    /* font-family: "nunito", Arial, Helvetica, sans-serif; */
+}
+form{
+    display: grid;
+    max-width: 350px;
+    width: 100%;
+    z-index: 2;
+}
+form input {
+    border: 1px solid var(--green);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 15px 0;
+    font-size: 16px;
+    background-color: var(--white);
+}
+/* form input[type="file"] {
+    height: 40px;
+    padding: 0 10px 0 0;
+    cursor: pointer;
+} */
+/* form input::-webkit-file-upload-button {
+    width: 50%;
+    height: 100%;
+    background-color: var(--green);
+    border: none;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+} */
+form button {
+    width: 60%;
+    border: none;
+    font-size: 1.3rem;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 15px auto;
+    cursor: pointer;
+    font-weight: 600;
+}
+form button[type=submit]{
+    background-color: var(--green);
+    color: var(--white);
+    box-shadow: 5px 5px 10px var(--box-shadow),   5px 5px 10px #026fbb14,   -5px 5px 10px #16c09b1f ;
+}
+form button[type=submit]:active{
+    box-shadow:  inset 5px 5px 10px var(--box-shadow), inset  5px 5px 10px #026fbb14, inset  -5px 5px 10px #16c09b1f;
+}
+
+textarea{
+    border: 1px solid var(--green);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 15px 0;
+    font-size: 1.2rem;
+}
+textarea:focus{
+    border: 1px solid var(--green);
+}
+
+
+
 @media screen and (max-width: 480px) {
+    .grid-2{
+        grid-template-columns: 1fr;
+    }
     .cart-header {
         grid-template-columns: 5fr 3fr 2fr .5fr;
     }
@@ -172,5 +266,17 @@ h2{
                              ;
         padding: 20px 0;
         grid-gap: 20px;
+    }
+    .right{
+        background-color: white;
+    }
+    .right h3{
+        color: var(--dark-blue);
+    }
+    label{
+        color: var(--dark-blue);
+    }
+    form input, form textarea {
+     border: 1px solid var(--green);
     }
 }

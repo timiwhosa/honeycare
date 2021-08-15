@@ -1,11 +1,13 @@
 :root{
     --white: #ffffff;
+    --white2:#ffffffba;
     --black: #333333;
     --blue: #026FBB;
     --blue1:#478DBF;
     --blue2:#0daae0;
     --blue3: #04a9f5;
     --blue4: #007AD0;
+    --dark-blue: #083759;
     --green: #16C09B;
     --green2:#4caf50;
     --box-shadow: rgba(0 0 0 / 15%);
@@ -113,7 +115,6 @@ h3{
     cursor: pointer;
 }
 .btn:active{
-    
     box-shadow:  inset 5px 5px 10px var(--box-shadow), inset  5px 5px 10px #026fbb14, inset  -5px 5px 10px #16c09b1f;
 }
 .border-btn{

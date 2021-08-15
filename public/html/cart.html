@@ -54,7 +54,7 @@
     </nav>
 
     <section class="width">
-      <div class="grid">
+      <div class="grid-2">
         <div class="left">
           <h2>Shopping Cart</h2>
           <div class="cart">
@@ -81,15 +81,129 @@
           </div>
         </div>
         <div class="right">
-            payment
+            <h3>Ready to get these products?</h3>
+            <!-- <div class="btn btn-primary">Send me these</div> -->
+
+            <div class="payment">
+              <!-- <h4>Honeycare PnB Payment</h4>
+              <div class="price">5,000</div>
+              <div class="steps">
+
+              </div> -->
+              <form action="" id="customer-details">
+                <!-- <label>Enter Delivery Details</label> -->
+                <label for="customer-name">Enter Your Name</label>
+                <input type="text" name="customer-name" required id="name" placeholder="John Doe" value="lorem">
+                <label for="customer-email">Enter Your Email</label>
+                <input type="email" name="customer-email" required id="email" placeholder="JohnDoe@gmail.com" value="JohnDoe@gmail.com">
+                <label for="customer-number">Enter Your Phone Number</label>
+                <input type="number" name="customer-number" required id="number" placeholder="080345xxxxx" value="080345">
+                <label for="customer-address">Enter Your Address</label>
+                <textarea name="customer-address" required id="address" cols="30" rows="5" placeholder="include Landmarks, state, city pls" value="080345"></textarea>
+                <button type="submit" class="">Send it Now</button>
+              </form>
+              <!-- <form action="" id="payment-form">
+                <label>Enter card Details</label>
+                <label for="card-number">Enter card Number</label>
+                <input type="number" name="card-number" id="" placeholder="5355-XXXX-XXXX-XXXX" required>
+                <div class="grid-2">
+                  <div class="">
+                    <label for="card-name">Expiry Date</label>
+                    <input type="number" name="card-name" id="" maxlength="5" placeholder="04/24" required>
+                  </div>
+                  <div class="">
+                    <label for="card-name">cvv</label>
+                    <input type="number" name="card-name" id="" minlength="3" maxlength="3" placeholder="123" required>
+                  </div>
+                </div>
+                <button type="submit" class="">Verify and Pay</button>
+              </form> -->
+              <!-- <form action="" id="payment-form">
+                <label class="center">OTP</label>
+                <label for="">Enter OTP code</label>
+                <input type="number" name="card-otp" id="" placeholder="3" required>
+                <input type="number" name="card-otp" id="" placeholder="3" required>
+                <input type="number" name="card-otp" id="" placeholder="3" required>
+                <input type="number" name="card-otp" id="" placeholder="3" required>
+                <input type="number" name="card-otp" id="" placeholder="3" required>
+                
+                <button type="submit" class="">Verify</button>
+              </form> -->
+            </div>
         </div>
       </div>
     </section>
 
     <script>
+      String.prototype.escape = function () {
+            var tagtoreplace = {
+                "&": "&amp;",
+                "<": "&lt",
+                ">": "&gt",
+                "=": "",
+                "script": " ",
+                "Script": " ",
+                '"': " ",
+                "`": " "
+            };
+            return this.replace(/[&<>`=]/g, function (tag) {
+                return tagtoreplace[tag] || tag;
+            });
+        }
+       
       function continueshopping(){
         window.history.back();
       }
+      var products = JSON.parse(localStorage.getItem("honeycareproduct"));
+      document.getElementById("customer-details").addEventListener("submit", pay);
+      function pay(e){
+        e.preventDefault();
+        if(products){
+          var name = e.target[0].value.escape();
+          var email = e.target[1].value.escape();
+          var number = e.target[2].value;
+          var address = e.target[3].value.escape();
+          var productBought =  getprod();
+          if(name.trim().length > 4){
+            if(number.trim().length> 9 && number.trim().length< 16){
+                if(address.trim().length> 5){
+                  var data = {name,email,number,address,productBought};
+                  fetch("/pay", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(data)
+                  }).then(res=> res.json()).then(message=> {alert(message.message); document.getElementById("customer-details").reset()})
+                  .catch(err=>{console.error(err)});
+              }
+              else{
+                alert("Pls enter accurate address")
+              }
+            }
+            else{
+              alert("Pls enter a valid phone number ")
+            }
+          }else{
+            alert("Pls enter a valid name")
+          }
+        }
+
+      }
+      function getprod(){
+
+        if(products){
+          var prod = [];
+          Object.values(products).forEach((product) => {
+            prod.push({
+              id: product.id,
+              category: product.category,
+              subcategory: product.subcategory,
+              incart: product.incart
+            })
+          });
+          return prod;
+        }
+      }
+
     </script>
     <script src="/js/general.js"></script>
   </body>
