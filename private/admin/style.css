@@ -234,6 +234,7 @@ section >div{
     height: 0;
     overflow: hidden;
     padding: 0;
+    transition: all ease-in-out .5s;
 }
 .ctn.active{
     height: 100vh;
