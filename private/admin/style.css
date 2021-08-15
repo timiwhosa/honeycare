@@ -485,9 +485,11 @@ img{
 }
 #new-category{
     position: relative;
-    padding-top: 40px;
 
-} 
+}
+#new-category h2{
+    padding-top: 40px;
+}
 #new-category .grid-2{
     width: 70%;
     position: relative;
