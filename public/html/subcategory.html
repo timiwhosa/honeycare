@@ -57,8 +57,8 @@
         <div class="direction-section">
           <ul>
             <li><a href="/">Home ></a></li>
-            <li>Health ></li>
-            <li>Vitamins </li>
+            <li class="direction-cat">Health ></li>
+            <li class="direction-subcat">Vitamins </li>
           </ul>
         </div>
         <div class="headsection">
@@ -80,101 +80,16 @@
         </div>
             
         <div class="subcategory color-text" id="subcategory"> Vitamins</div>
-        <div class="prod">
-            <div class="product">
-                <a href="/product/health/category/singleproduct/productName">
-                    <div class="product-img">
-                          <img src="/img/product/allproducts/product1.png" alt="honeycare pharmacy fluvic acid">
-                    </div>
-                  <div class="product-name">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, modi?
-                  </div>
-                  <div class="product-price price">N5,000</div>
-                </a>
-                  <div class="addtocart-btn btn bg-green1">
-                      <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
-                  </div>
-              </div>
-            <div class="product">
-                <a href="/product/health/category/singleproduct/productName">
-                    <div class="product-img">
-                          <img src="/img/product/allproducts/product2.png" alt="honeycare pharmacy fluvic acid">
-                    </div>
-                  <div class="product-name">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, modi?
-                  </div>
-                  <div class="product-price price">N5,000</div>
-                </a>
-                  <div class="addtocart-btn btn bg-green1">
-                      <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
-                  </div>
-              </div>
-            <div class="product">
-                <a href="/product/health/category/singleproduct/productName">
-                    <div class="product-img">
-                          <img src="/img/product/allproducts/product1.png" alt="honeycare pharmacy fluvic acid">
-                    </div>
-                  <div class="product-name">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, modi?
-                  </div>
-                  <div class="product-price price">N5,000</div>
-                </a>
-                  <div class="addtocart-btn btn bg-green1">
-                      <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
-                  </div>
-              </div>
-            <div class="product">
-                <a href="/product/health/category/singleproduct/productName">
-                    <div class="product-img">
-                          <img src="/img/product/allproducts/product4.png" alt="honeycare pharmacy fluvic acid">
-                    </div>
-                  <div class="product-name">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, modi?
-                  </div>
-                  <div class="product-price price">N5,000</div>
-                </a>
-                  <div class="addtocart-btn btn bg-green1">
-                      <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
-                  </div>
-              </div>
-            <div class="product">
-                <a href="/product/health/category/singleproduct/productName">
-                    <div class="product-img">
-                          <img src="/img/product/allproducts/product2.png" alt="honeycare pharmacy fluvic acid">
-                    </div>
-                  <div class="product-name">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, modi?
-                  </div>
-                  <div class="product-price price">N5,000</div>
-                </a>
-                  <div class="addtocart-btn btn bg-green1">
-                      <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
-                  </div>
-              </div>
-            <div class="product">
-                <a href="/product/health/category/singleproduct/productName">
-                    <div class="product-img">
-                          <img src="/img/product/allproducts/product3.png" alt="honeycare pharmacy fluvic acid">
-                    </div>
-                  <div class="product-name">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, modi?
-                  </div>
-                  <div class="product-price price">N5,000</div>
-                </a>
-                  <div class="addtocart-btn btn bg-green1">
-                      <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
-                  </div>
-              </div>
-            
+        <div class="prod" id="prodDiv">            
         </div>
-        <div class="product-bottom-nav">
+        <!-- <div class="product-bottom-nav">
             <ul>
                 <li class="active">1</li>
                 <li>2</li>
                 <li>3</li>
                 <li>Next</li>
             </ul>
-        </div>
+        </div> -->
         
         <footer>
             <ul>
@@ -186,5 +101,57 @@
         </footer>
     </section>
     <script src="/js/general.js"></script>
+    <script>
+      var category = window.location.href.split("category/")[1].split("/")[0];
+      var subcategory = window.location.href.split("category/")[1].split("/")[1];
+      document.getElementsByClassName("direction-cat")[0].innerHTML = category + " >";
+      document.getElementsByClassName("direction-subcat")[0].innerHTML = subcategory;
+
+      function loadproduct(data){
+        var productDiv = document.getElementById("prodDiv");
+        if(data){
+          data.forEach(product=>{
+            // console.log(product)
+            var hh = JSON.stringify(product)
+            prodDiv.innerHTML +=
+              `
+                <div class="product">
+                <a href="/product/${product.category}/${product.subcategory}/singleproduct/${product._id}">
+                    <div class="product-img">
+                          <img src="${product.image}" alt="honeycare pharmacy ${product.name}">
+                    </div>
+                  <div class="product-name">
+                      ${product.name}
+                  </div>
+                  <div class="product-price price">${product.price}</div>
+                </a>
+                  <div class="addtocart-btn btn bg-green1" onclick='addtocart(${hh})'>
+                      <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
+                  </div>
+              </div>
+              `
+          })
+        }
+      }
+
+
+      // function pagination(number){
+      //   if(number>9){
+
+      //   }
+      // }
+
+      fetch(`/products/${category}/${subcategory}`).then((res)=>{
+        return res.json()
+      }).then((data)=>{
+        if(data.status === 200){
+          // console.log(data.productstosend)
+          loadproduct(data.productstosend)
+        }else{
+          alert(data.message)
+        }
+      })
+      // console.log(window.location.href.split("category/")[1].split("/")[0])
+    </script>
 </body>
 </html>

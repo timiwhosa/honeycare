@@ -333,7 +333,7 @@
             popular.innerHTML +=
               `
                 <div class="product">
-                <a href="/product/${product.section}/${product.category}/${product.subcategory}/singleproduct/${product.id}">
+                <a href="/product/${product.category}/${product.subcategory}/singleproduct/${product._id}">
                     <div class="product-img">
                           <img src="${product.image}" alt="honeycare pharmacy ${product.name}">
                     </div>
@@ -350,12 +350,31 @@
           })
         }
       }
+
+      function saveandloadcategory(data){
+        if(data){
+          localStorage.setItem("honeycareCategory", JSON.stringify(data, null, 2)
+      );
+        }
+        var categoryDiv = document.getElementsByClassName("categories")[0];
+        categoryDiv.innerHTML = "";
+        data[0].categories.forEach((cat)=>{
+          categoryDiv.innerHTML += `<div class="">${cat.name}</div>`
+        })
+      }
       
 
       fetch("/popular").then(res=> {return res.json()})
       .then(data=> {getpopular(data)})
       .catch(err=>{console.error(err)});
 
+      fetch("/category").then((res)=>{return res.json()}).then((data)=>{
+        if(data.status===200){
+          saveandloadcategory(data.data)
+        }else{
+          console.log(data);
+        }
+      }).catch((err)=> console.error(err))
       
       document.getElementById("contact-form").addEventListener("submit", contactus)
       

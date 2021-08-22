@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+
+    <style>
+        :root{
+            --white: #ffffff;
+            --white2:#ffffffba;
+            --black: #333333;
+            --blue: #026FBB;
+            --blue1:#478DBF;
+            --blue2:#0daae0;
+            --blue3: #04a9f5;
+            --blue4: #007AD0;
+            --dark-blue: #083759;
+            --green: #16C09B;
+            --green2:#4caf50;
+            --dark-green: #026550;
+            --box-shadow: rgba(0 0 0 / 15%);
+            --red: #D60606;
+            --grey: grey;
+            --width: 70vw;
+            --min-width: 960px;
+            --margin: 160px;
+            --linear: linear-gradient(45deg, var(--green), var(--blue));
+        }*{
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style-type: none;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            background-color: var(--white2);
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        label{
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--dark-blue);
+            /* font-family: "nunito", Arial, Helvetica, sans-serif; */
+        }
+        form{
+            display: grid;
+            max-width: 350px;
+            width: 100%;
+            z-index: 2;
+        }
+        form input{
+            border: 1px solid var(--green);
+            padding: 10px;
+            border-radius: 4px;
+            margin: 15px 0;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button {
+            width: 60%;
+            border: none;
+            font-size: 1.3rem;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 15px auto;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button[type=submit]{
+            background-color: var(--green);
+            color: var(--white);
+            box-shadow: 5px 5px 10px var(--box-shadow),   5px 5px 10px #026fbb14,   -5px 5px 10px #16c09b1f ;
+        }
+        form button[type=reset]{
+            border: .5px solid var(--green);
+            max-width: 100px;
+            background-color: transparent;
+        }
+        button[type=submit]:active{
+            box-shadow:  inset 5px 5px 10px var(--box-shadow), inset  5px 5px 10px #026fbb14, inset  -5px 5px 10px #16c09b1f;
+        }
+
+        .ctn{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            min-width: 400px;
+        }
+        h3{
+            font-size: 2rem;
+            color:var(--blue);
+            text-align: center;
+        }
+        .red{
+            color: red !important;
+            padding-bottom: 20px;
+            text-align: center;
+            font-size: 16px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="ctn">
+        <h3>Login</h3>
+        <form action="" id="login-form">
+            <label for="error" class="red">error occured</label>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required>
+            <label for="passsword">Password</label>
+            <input type="password" name="password" id="password" required>
+            <div class="flex">
+                <button type="reset">Reset</button>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", login);
+        function login(e){
+            e.preventDefault();
+            var username = e.target[0].value;
+            var password = e.target[1].value;
+            fetch("/login", {
+                method: "POST",
+                headers: {"content-type": "application/json"},
+                body: JSON.stringify({username,password})
+            }).then((res)=> {return res.json()})
+            .then((message)=>{
+                if(message.status===200){
+                    window.location.href = message.redirect
+                }else{
+                    document.getElementsByClassName("red")[0].style.display = "block";
+                    document.getElementsByClassName("red")[0].innerText = message.message;
+                }
+            })
+        }
+    </script>
+</body>
+</html>

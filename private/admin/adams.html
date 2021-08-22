@@ -33,6 +33,9 @@
             <div class="setting dashb-sections" data-target="settings" onclick="section(this.dataset.target)">
                 settings
             </div>
+            <div class="logout center white b" onclick="logout()">
+                logout
+            </div>
 
         </div>
         <div class="right">
@@ -107,51 +110,27 @@
                        <div class="products-product-category">
                            <h3>Categories</h3>
                            <div class="cat">
-                               <div class="accordion active">
-                                    <div class="head">
-                                        Health and Vitamins
-                                    </div>
-                                    <div class="content">
-                                        <ul>
-                                            <li class="active">Vitamins</li>
-                                            <li>Proteins</li>
-                                            <li>Lorem</li>
-                                        </ul>
-                                    </div>
-                               </div>
-                               <div class="accordion">
-                                    <div class="head">
-                                        Health and Vitamins
-                                    </div>
-                                    <div class="content">
-                                        <ul>
-                                            <li>Vitamins</li>
-                                            <li>Proteins</li>
-                                            <li>Lorem</li>
-                                        </ul>
-                                    </div>
-                               </div>
                            </div>
                        </div>
                    </div>
                    <div class="upload" id="upload">
                        <div class="upload-text">
-                            <form action="">
+                            <form action="" id="upload-product" enctype="multipart/form-data">
                                 <label for="product-name">Product name</label>
-                                <input type="text" name="" id="product-name" required placeholder="what is the product called">
+                                <input type="text" value="111" name="" id="product-name" required placeholder="what is the product called">
                                 <label for="product-price">Price</label>
-                                <input type="number" name="" id="product-price" required placeholder="5,000">
+                                <input type="number" value="111" name="price" id="product-price" required placeholder="5,000">
                                 <label for="product-image">Product Image</label>
-                                <input type="file" name="product-image" id="product-image" required>
+                                <input type="file" name="product-image" id="product-image" oninput="filereadscript(this)" required>
                                 <label for="category">Category</label>
-                                <select name="" id="category" required>
+                                <select name="" class="selectcategory" id="category" required>
                                     
                                 </select>
                                 <label for="subcategory">SubCategory</label>
-                                <select name="" id="subcategory" required>
+                                <select name="" class="selectsubcategory" id="subcategory" required>
                                     
                                 </select>
-                                <label for="product-name">Description</label>
+                                <label for="product-description">Description</label>
                                 <textarea name="" id="" cols="30" rows="5" required placeholder="product Description"></textarea>
                                 <label for="ingredients">Ingredients</label>
                                 <textarea name="" id="ingredients" cols="30" rows="5" required placeholder="Ingredients"></textarea>
@@ -164,7 +143,7 @@
                             </form>
                        </div>
                        <div class="upload-preview">
-
+                        <img src="" alt="" class="preview-img">
                        </div>
                    </div>
                 </section>
@@ -187,7 +166,7 @@
                     <form action="" id="new-subcategory">
                         <h3>New Sub Category</h3>
                         <label for="category">Category</label>
-                        <select name="" id="categoryfallunder" required>
+                        <select name="" class="selectcategory" id="categoryfallunder" required>
                             
                             
                         </select>
@@ -205,8 +184,7 @@
                     <form action="" id="edit-category">
                         <h3>Edit Category</h3>
                         <label for="category">Category name</label>
-                        <select name="" id="categorytoedit" required>
-                            
+                        <select name="" class="selectcategory" id="categorytoedit" required>
                         </select>
                         <label for="neweditcategory">New Name</label>
                         <input type="text" name="category" id="neweditcategory" required placeholder="new category name">
@@ -218,14 +196,14 @@
                     <form action="" id="edit-subcategory">
                         <h3>Edit Sub Category</h3>
                         <label for="category">Category</label>
-                        <select name="" id="editcategory" required>
+                        <select name="" class="selectcategory" id="editcategory" required>
                             
                         </select>
                         <label for="subcategory">SubCategory</label>
-                        <select name="" id="editsubcategory" required>
+                        <select name="" class="selectsubcategory" id="editsubcategory" required>
                             
                         </select>
-                        <label for="neweditsubcategory">Sub Category</label>
+                        <label for="neweditsubcategory">New Sub Category</label>
                         <input type="text" name="subcategory" id="neweditsubcategory" required placeholder="subcategory">
                     <div class="">
                             <button type="reset">Reset</button>
@@ -237,9 +215,11 @@
             <div id="settings" class="ctn">
                 <div class="dummy"><span>HONEYCARE </span>PHARMACY</div>
                 <div class="dummy dm2"><span>AND BEAUTY HUB</span></div>
-                            <form action="">
+                            <form action="" id="settions-form">
                                 <label for="username">UserName</label>
                                 <input type="text" name="username" id="username" required placeholder="Username">
+                                <label for="newusername">New UserName</label>
+                                <input type="text" name="newusername" id="newusername" required placeholder=" New Username">
                                 <label for="passsword">Current Password</label>
                                 <input type="password" name="" id="password" required placeholder="password">
                                 <label for="new-password">New Password</label>
@@ -259,8 +239,7 @@
         <div class="overlay-content">
             
         </div>
-    </div>
-    <div class="message-show bg-dblue white" id="success"> item delivered</div>
+    </div>    
     <script src="/admin/adams.js"></script>
 </body>
 </html>

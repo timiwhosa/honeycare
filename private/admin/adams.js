@@ -1,20 +1,20 @@
 var hhh;
+var allcategorydata;
 var ordertofetch = 1;
 
 // toggle section
 async function section(position) {
-    var h = position;
   var y = document.querySelectorAll(".dashb-sections");
   for (i = 0; i < y.length; i++) {
     y[i].classList.remove("active");
     }
-    window.location.href = window.location.href.split("#")[0] + `#${h}`;
+    window.location.href = window.location.href.split("#")[0] + `#${position}`;
     for (j = 0; j < y.length; j++) {
         if(y[j].dataset.target === window.location.href.split("#")[1]){
           y[j].classList.add("active");
         }
     }
-  sectiontoshow(h);
+  sectiontoshow(position);
 }
 async function sectiontoshow(section) {
   var y = document.querySelectorAll(".ctn");
@@ -109,22 +109,22 @@ overlay.children[0].addEventListener("click", closeoverlay);
 async function eachorder(data) {
     var allorder = "";
     data.map((order) => {
-        allorder += `
+      allorder += `
         <div class="product" onclick="getorder('${order._id}')">
-                            <div class="product-head">
-                                <div>
-                                    <div class="">
-                                        <div><span>Name:</span> <span>${order.name}</span></div>
-                                        <div><span>Number:</span> <span>${order.number}</span></div>
-                                        <div ><span>Paid:</span> <span>${order.total}</span></div>
-                                        <div ><span>${order.date} ${order.time}</span></div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
+          <div class="product-head">
+              <div>
+                  <div class="">
+                      <div><span>Name:</span> <span>${order.name}</span></div>
+                      <div><span>Number:</span> <span>${order.number}</span></div>
+                      <div ><span>Paid:</span> <span>${order.total}</span></div>
+                      <div ><span>${order.date} ${order.time}</span></div>
+                  </div>
+              </div>
+              
+          </div>
+        </div>
         
-        `;
+      `;
     })
     document.getElementById("request-products").innerHTML = allorder;
 }
@@ -181,7 +181,6 @@ async function  loadspecificorder(data) {
     overlay.children[1].innerHTML = prod;
 }
 
-// onclick="delivered('${data[0]._id}')"
 // Refill 
 function refill(data) {
   var refillDiv = document.getElementById("refills");
@@ -203,36 +202,153 @@ function refill(data) {
   })
 }
 
-function loadcategoryOptions(data) {
-  var categorytoedit = document.getElementById("categorytoedit");
-  var editcategory = document.getElementById("editcategory");
-  var categoryfallunder = document.getElementById("categoryfallunder");
-  categorytoedit.innerHTML = "";
-  editcategory.innerHTML = "";
-  categoryfallunder.innerHTML = "";
-  if (data.length > 0) {
-    data[0].categories.forEach((category) => {
-      categorytoedit.innerHTML += `<option value=${category}>${category}</option>`;
-      editcategory.innerHTML += `<option value=${category}>${category}</option>`;
-      categoryfallunder.innerHTML += `<option value=${category}>${category}</option>`;
+
+// PRODUCT ACCORDION
+function accordion(){
+  var accordionHead = document.getElementsByClassName("accordion-head");
+  Object.entries(accordionHead).forEach((accord) => {
+    accord[1].addEventListener("click", showprodcat);
+  });
+  function showprodcat(e) {
+    console.log(e);
+    Object.entries(accordionHead).forEach((accord) => {
+      console.log(accord.parentElement);
+      accord[1].parentElement.classList.remove("active");
     });
-  } else {
-    categorytoedit.innerHTML = "<option>no category</option>";
-    editcategory.innerHTML = "<option>no category</option>";
-    categoryfallunder.innerHTML = "<option>no category</option>";
+    e.target.parentElement.classList.add("active");
   }
 }
 
-document
-  .getElementById("edit-category")
-  .addEventListener("submit", categorytoeditfnc);
 
-function categorytoeditfnc(e) {
-  e.preventDefault();
-  console.log(e.target[0].value)
+// PRODUCT ACCORDION
+
+function accordioncontent(){
+  var accordionContent = document.getElementsByClassName("accordion-content");
+  Object.entries(accordionContent).forEach((accord) => {
+    // console.log(accord[1])
+    Object.entries(accord[1].children[0].children).forEach((accordchild) => {
+      accordchild[1].addEventListener("click", showprodsubcat);
+    });
+  });
+  function showprodsubcat(e) {
+    // console.log(e);
+    Object.entries(accordionContent).forEach((accord) => {
+      Object.entries(accord[1].children[0].children).forEach((accordchild) => {
+        accordchild[1].classList.remove("active");
+      });
+    });
+    e.target.classList.add("active");
+  }
+}
+
+// LOAD CATEGORY AND SUBCATEGORY OF PRODUCTS
+function loadcatandsubcatforproduct() {
+  var cat = document.getElementsByClassName("cat")[0]
+  cat.innerHTML= "";
+  allcategorydata[0].categories.forEach((category) => {
+    var ul;
+    ul = '';
+    category.sub.forEach((subcat) => {
+      ul += `<li>${subcat} </li>`
+    });
+    cat.innerHTML += `
+      <div class="accordion">
+        <button class="head accordion-head">
+            ${category.name}
+        </button>
+        <div class="content accordion-content">
+            <ul>
+                ${ul}
+            </ul>
+        </div>
+      </div>    
+    `;
+
+  });
+  accordion();
+  accordioncontent();
+  document.getElementsByClassName("accordion")[0].classList.add("active");
 }
 
 
+// LOAD CATEGORY OPTIONS
+function loadcategoryOptions(data) {
+  var cat = document.getElementsByClassName("selectcategory");
+  if (data.length > 0) {
+    Object.entries(cat).forEach((catDiv) => {
+      catDiv[1].innerHTML = "";
+      data[0].categories.forEach((category) => {
+        console.log(category.name)
+        catDiv[1].innerHTML += `<option value="${category.name}">${category.name}</option>`;
+      });
+    });
+  } else {
+    Object.entries(cat).forEach((catDiv) => {
+      catDiv[1].innerHTML += `<option></option>`;
+    });
+  }
+}
+
+// LOAD SUBCATEGORY OPTIONS
+
+function loadsubcategoryOptions(data) {
+  var cat = document.getElementsByClassName("selectsubcategory");
+  if (data.length > 0) {
+    if(data[0].categories[0].sub.length>=0){
+      Object.entries(cat).forEach((catDiv) => {
+        catDiv[1].innerHTML = "";
+        data[0].categories[0].sub.forEach((subcategory) => {
+          catDiv[1].innerHTML += `<option value=${subcategory}>${subcategory}</option>`;
+        });
+        catDiv[1].previousElementSibling.previousElementSibling.addEventListener(
+          "change",
+          changesubcatbasedoncat
+        );
+      });
+    }
+  } else {
+    Object.entries(cat).forEach((catDiv) => {
+      catDiv[1].innerHTML += `<option></option>`;
+    });
+  }
+}
+
+// CHANGE SUBCATEGORY BASED ON CATEGORY SELECTED
+function changesubcatbasedoncat(cat) {
+  var subcatdiv = cat.target.nextElementSibling.nextElementSibling;
+  subcatdiv.innerHTML= "";
+  allcategorydata[0].categories.forEach((category) => {
+    if (category.name === cat.target.value) {
+      category.sub.forEach((subcat) => {
+        console.log(subcat)
+        subcatdiv.innerHTML += `<option value=${subcat}>${subcat}</option>`;
+      })
+    }
+  });
+}
+
+function success(data) {
+  var suc = document.createElement("div");
+  suc.setAttribute("class", "message-show bg-dblue white");
+  suc.setAttribute("id", `success${Math.floor(Math.random())}`);
+  suc.textContent = data;
+  document.body.append(suc);
+  setTimeout(() => {
+    document.body.removeChild(suc);
+  }, 2000);
+}
+
+function filereadscript(data) {
+  if (data.files && data.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      document
+        .getElementsByClassName("preview-img")[0]
+        .setAttribute("src", e.target.result);
+    };
+  }
+  reader.readAsDataURL(data.files[0]);
+}
 
 
 
@@ -279,6 +395,20 @@ function fetchOrder(type) {
   }
 }
 
+function loadcategory() {
+  fetch("/allcategories")
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      allcategorydata = data;
+      loadcategoryOptions(data);
+      loadsubcategoryOptions(data);
+      loadcatandsubcatforproduct();
+      console.log(data);
+    });
+}
+loadcategory();
 
 
 
@@ -333,6 +463,50 @@ function deliveredRefill(id) {
   }
 }
 
+
+
+document
+  .getElementById("upload-product")
+  .addEventListener("submit", uploadproduct);
+function uploadproduct(e) {
+  e.preventDefault();
+  console.log(e)
+  var name = e.target[0].value;
+  var price = e.target[1].value;
+  var image = e.target[2].files[0];
+  var category = e.target[3].value;
+  var subcategory = e.target[4].value;
+  var Description = e.target[5].value;
+  var ingredients = e.target[6].value;
+  var uses = e.target[7].value;
+  const formdata = new FormData();
+  formdata.append("product-image", image);
+
+  var confirmit = confirm("Add this product");
+  if (confirmit === true) {
+    var urll = `/upload/product?name=${name}&price=${price}&category=${category}&subcategory=${subcategory}&Description=${Description}&ingredients=${ingredients}&uses=${uses}`;
+                
+    fetch(urll, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: formdata,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.status === 208) {
+          alert(data.message);
+        } else {
+          success(data.message);
+          loadcategory();
+          e.target[0].value = "";
+        }
+      })
+      .catch((err) => console.error(err));
+  }
+}
+
 document
   .getElementById("new-category-form")
   .addEventListener("submit", addnewcategory);
@@ -350,9 +524,10 @@ function addnewcategory(e) {
       })
       .then((data) => {
         if (data.status === 208) {
-          alert(data.message)
+          alert(data.message);
         } else {
           success(data.message);
+          loadcategory();
           e.target[0].value = "";
         }
       })
@@ -360,20 +535,160 @@ function addnewcategory(e) {
   }
 }
 
-function success(data) {
-  var successDiv = document.getElementById("success");
-  successDiv.innerText = data;
-  successDiv.style.display = "flex"
-  setTimeout(() => {
-    successDiv.style.display = "none";
-  }, 2000);
+document
+  .getElementById("new-subcategory")
+  .addEventListener("submit", addnewsubcategory);
+function addnewsubcategory(e) {
+  e.preventDefault();
+  // console.log(e)
+  var confirmit = confirm("Add this subcategory");
+  if (confirmit === true) {
+    fetch("/addsubcategory", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        category: e.target[0].value,
+        subcategory: e.target[1].value,
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.status === 208) {
+          alert(data.message);
+        } else {
+          success(data.message);
+          loadcategory();
+          e.target[0].value = "";
+        }
+      })
+      .catch((err) => console.error(err));
+  }
 }
 
-fetch("/allcategories").then((res) => { return res.json() })
-  .then((data) => {
-    loadcategoryOptions(data);
-    console.log(data);
-})
+
+document
+  .getElementById("edit-category")
+  .addEventListener("submit", editcategoryname);
+function editcategoryname(e) {
+  e.preventDefault();
+  console.log(e)
+  // console.log(e)
+  if (e.target[0].value.toLowerCase() === e.target[1].value.toLowerCase()) {
+    return
+  } else {
+    var confirmit = confirm("Change category name?");
+    if (confirmit === true) {
+      fetch("/editcategoryname", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          category: e.target[0].value.toLowerCase(),
+          newcategory: e.target[1].value.toLowerCase(),
+        }),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data.status === 208) {
+            alert(data.message);
+          } else {
+            success(data.message);
+            loadcategory();
+            e.target[0].value = "";
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  }
+}
+
+document
+  .getElementById("edit-subcategory")
+  .addEventListener("submit", editsubcategoryname);
+function editsubcategoryname(e) {
+  e.preventDefault();
+  // console.log(e)
+  if (e.target[1].value.toLowerCase() === e.target[2].value.toLowerCase()) {
+    return;
+  } else {
+    var confirmit = confirm("Change subcategory name?");
+    if (confirmit === true) {
+      fetch("/editsubcategoryname", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          category: e.target[0].value.toLowerCase(),
+          subcategory: e.target[1].value.toLowerCase(),
+          newsubcategory: e.target[2].value.toLowerCase(),
+        }),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data.status === 208) {
+            alert(data.message);
+          } else {
+            success(data.message);
+            loadcategory();
+            e.target[0].value = "";
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  }
+}
+
+document.getElementById("settions-form").addEventListener("submit", changepassword);
+
+function changepassword(e) {
+  e.preventDefault();
+  var username = e.target[0].value;
+  var newusername = e.target[1].value;
+  var password = e.target[2].value;
+  var newpassword = e.target[3].value;
+  // console.log(username, newusername, password, newpassword)
+  
+   var confirmit = confirm("Change passowrd?");
+   if (confirmit === true) {
+     fetch("/passwordchange", {
+       method: "POST",
+       headers: { "content-type": "application/json" },
+       body: JSON.stringify({
+         username,newusername,password,newpassword
+       })
+     })
+       .then((res) => {
+         return res.json();
+       })
+       .then((data) => {
+         if (data.status === 208) {
+           alert(data.message);
+         } else {
+           success(data.message);
+           e.target[0].value = "";
+           e.target[1].value = "";
+           e.target[2].value = "";
+           e.target[3].value = "";
+         }
+       })
+       .catch((err) => console.error(err));
+   }
+}
+
+function logout() {
+  fetch("/logout", {
+    method: "POST",
+    headers: { "content-type": "application/json" }
+  }).then((res) => { return res.json() }).then((data) => {
+    if (data.status === 200) {
+      window.location.href = data.redirect;
+    }
+  });
+};
 
 // toogle
 if (window.location.href.includes("#")){

@@ -57,15 +57,15 @@
         <div class="direction-section">
           <ul>
             <li><a href="">Home ></a></li>
-            <li>Health ></li>
-            <li><a href="/subcategory/health">Vitamins ></a></li>
-            <li>fluvic acid</li>
+            <li id="direction-cat">Health ></li>
+            <li><a href="/subcategory/health" id="direction-subcat">Vitamins ></a></li>
+            <li id="direction-name">fluvic acid</li>
           </ul>
         </div>
         <div class="single-product-main">
           <!-- <h3 class="center">Vitamins</h3> -->
-          <div class="singleproduct-ctn test-overide">
-            <div class="singleproduct-product">
+          <div class="singleproduct-ctn test-overide" id="singleproduct-ctn">
+            <!-- <div class="singleproduct-product">
               <img alt="honeycare pharmacy" src="/img/product/allproducts/product4.png" alt="" />
             </div>
             <div class="singleproduct-description">
@@ -97,12 +97,12 @@
   subcategory: "Vitamins",
   section: "health",
 })'>Add to cart</div>
-                    <!-- <div class="favourite">whatsapp</div>
-                    <div class="favourite">Share</div> -->
+                    
                 </div>
               </div>
+            </div> -->
             </div>
-          </div>
+          
         </div>
             <div class="singleproduct-details">
               <div class="details">
@@ -119,7 +119,7 @@
                   <div class="head" onclick="accordion(this)">
                     <span>Ingredients</span> <span>+</span>
                   </div>
-                  <div class="content">
+                  <div class="content" id="ingredients">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Repellendus maiores animi non. Quas vel amet explicabo
                     alias, magnam sequi tempora?
@@ -127,7 +127,7 @@
                 </div>
                 <div class="accordion">
                   <div class="head" onclick="accordion(this)"><span>Uses</span> <span>+</span></div>
-                  <div class="content">
+                  <div class="content" id="uses">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Repellendus maiores animi non. Quas vel amet explicabo
                     alias, magnam sequi tempora?
@@ -143,7 +143,7 @@
       <div class="other-products">
           <h3>Similar Products</h3>
           <div class="suggestion scroll-section">
-              <div class="product">
+              <!-- <div class="product">
                 <a href="/product/health/category/singleproduct/productName">
                     <div class="product-img">
                           <img src="/img/product/allproducts/product1.png" alt="honeycare pharmacy fluvic acid">
@@ -184,7 +184,7 @@
                   <div class="addtocart-btn btn bg-green1">
                       <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
                   </div>
-              </div>
+              </div> -->
               
           </div>      
         </div>
@@ -207,6 +207,98 @@
         }
         position.parentElement.classList.add("active-accordion")
       }
+
+      var thiscategory = window.location.href.split("/product/")[1].split("/singleproduct/")[0].split("/")[0]
+      var thissubcategory = window.location.href.split("/product/")[1].split("/singleproduct/")[0].split("/")[1]
+      var thisid = window.location.href.split("/product/")[1].split("/singleproduct/")[1]
+
+
+      function loadproduct(data){
+        var m = JSON.stringify(data.producttosend);
+        var singleproductCtn = document.getElementById("singleproduct-ctn");
+        document.getElementById("ingredients").innerHTML = data.producttosend.ingredients;
+        document.getElementById("uses").innerHTML = data.producttosend.uses;
+        singleproductCtn.innerHTML = `
+          <div class="singleproduct-product">
+              <img alt="honeycare pharmacy ${data.producttosend.name}, price: ${data.producttosend.price}" src="${data.producttosend.image}"  />
+            </div>
+            <div class="singleproduct-description">
+              <div class="">
+                <h1>${data.producttosend.name}</h1>
+                <div class="description">
+                    ${data.producttosend.description}
+                </div>
+                <div class="flex-sb">
+                    <div class="price">${data.producttosend.price}</div>
+                    
+                </div>
+                <div class="addtocart">
+                    <div class="qnty">
+                      <span class="minus" onclick = "itemQuantity('decrease')">-</span>
+                      <input type="number" value="1" id="singlenumber"/>
+                      <span class="add" onclick = "itemQuantity('increase')">+</span>
+                    </div>
+                    <div class="btn btn-primary" onclick='addsingletocart(${m})'>Add to cart</div>
+                    <!-- <div class="favourite">whatsapp</div>
+                    <div class="favourite">Share</div> -->
+                </div>
+              </div>
+            </div>
+        
+        `;
+
+
+
+      }
+
+      function loadsimilarproducts(data){
+        console.log(data)
+        var similarctn = document.getElementsByClassName("scroll-section")[0];
+        similarctn.innerHTML = "";
+        data.forEach(product => {
+          similarctn.innerHTML += `
+             <div class="product">
+                <a href="/product/${product.category}/${product.subcategory}/singleproduct/${product._id}">
+                    <div class="product-img">
+                          <img src="${product.image}" alt="honeycare pharmacy ${product.name}, price: ${product.price}">
+                    </div>
+                  <div class="product-name">
+                      ${product.name}
+                  </div>
+                  <div class="product-price price">${product.price}</div>
+                </a>
+                  <div class="addtocart-btn btn bg-green1" onclick='addtocart(${JSON.stringify(product)})'>
+                      <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
+                  </div>
+              </div>
+          `;
+        });
+      }
+
+      function direction(data){
+        
+        document.getElementById("direction-cat").innerHTML = data.category + " >";
+        document.getElementById("direction-subcat").innerHTML = data.subcategory + " >";
+        document.getElementById("direction-name").innerHTML = data.name;
+      }
+
+      var ttt ;
+      fetch(`/singleproduct?category=${thiscategory}&subcategory=${thissubcategory}&id=${thisid}`)
+      .then((res)=>{
+        return res.json()
+      }).then((data)=>{
+        ttt=data;
+        if(data.status===200){
+          loadproduct(data)
+          direction(data.producttosend)
+          loadsimilarproducts(data.otherproducttosend)
+        }else{
+          alert(data.message)
+          window.history.back()
+        }
+      });
+
+
     </script>
     <script src="/js/general.js"></script>
 

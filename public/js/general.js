@@ -25,14 +25,14 @@ function addtocart(data) {
   // var products = JSON.parse(localStorage.getItem("honeycareproduct"));
 
   if (products) {
-    if (products[data.id]) {
+    if (products[data._id]) {
       // increase product number
-      increaseProductincart(data.id);
+      increaseProductincart(data._id);
     } else {
       // add product to cart
       data.incart = 1;
       data.totalPrice = data.price;
-      products[data.id] = data;
+      products[data._id] = data;
       localStorage.setItem(
         "honeycareproduct",
         JSON.stringify(products, null, 2)
@@ -42,24 +42,23 @@ function addtocart(data) {
   } else {
     products = {};
     data.incart = 1;
-    data.totalPrice = parseInt(products[id].incart) * products[id].price;
-    products[data.id] = data;
+    data.totalPrice = parseInt(data.incart) * data.price;
+    products[data._id] = data;
     localStorage.setItem("honeycareproduct", JSON.stringify(products, null, 2));
     numberincart();
   }
 }
 
 function increaseProductincart(id) {
-  products[id].incart = parseInt(products[id].incart ) + 1;
+  products[`${id}`].incart = parseInt(products[`${id}`].incart ) + 1;
   calculateProductprice(id);
   localStorage.setItem("honeycareproduct", JSON.stringify(products, null, 2));
   loadcart();
 }
 function decreaseProductincart(id) {
-  if (products[id]) {
-    products[id].incart = parseInt(products[id].incart ) - 1;
-    calculateProductprice(id);
-    console.log(products[id].incart);
+  if (products[`${id}`]) {
+    products[`${id}`].incart = parseInt(products[`${id}`].incart ) - 1;
+    calculateProductprice(`${id}`);
     localStorage.setItem("honeycareproduct", JSON.stringify(products, null, 2));
     zeroitem(id);
     loadcart();
@@ -69,7 +68,7 @@ function decreaseProductincart(id) {
 function deleteitem(id) {
   var ans = confirm("Do you want to remove this item");
   if (ans === true) {
-    delete products[id];
+    delete products[`${id}`];
     localStorage.setItem("honeycareproduct", JSON.stringify(products, null, 2));
     loadcart();   
   } else {
@@ -77,10 +76,10 @@ function deleteitem(id) {
   }
 }
 function zeroitem( id) {
-  if (products[id].incart == 0) {
+  if (products[`${id}`].incart == 0) {
     var ans = confirm("Do you want to remove this item");
     if (ans === true) {
-      delete products[id];
+      delete products[`${id}`];
       localStorage.setItem("honeycareproduct", JSON.stringify(products, null, 2));
       loadcart();
     } else {
@@ -92,8 +91,8 @@ function zeroitem( id) {
 
 
 function calculateProductprice(id) {
-  if (products[id] && products[id].incart != 0) {
-    products[id].totalPrice = parseInt(products[id].incart) * products[id].price;
+  if (products[`${id}`] && products[`${id}`].incart != 0) {
+    products[`${id}`].totalPrice = parseInt(products[`${id}`].incart) * products[`${id}`].price;
   }
 }
 function calculatetotalprice() {
@@ -103,6 +102,7 @@ function calculatetotalprice() {
   })
   document.getElementById("total").innerText = "N" +sumtotalprice.toLocaleString();
 }
+var testt;
 function loadcart() {
   if (window.location.pathname == "/cart") {
     numberincart();
@@ -110,7 +110,8 @@ function loadcart() {
       var cartItems = document.getElementById("cart-items");
       cartItems.innerHTML = "";
       Object.values(products).forEach((product) => {
-        calculateProductprice(product.id);
+        testt = product._id;
+        calculateProductprice(product._id);
         cartItems.innerHTML += `
         <div class="cart-item">
           <div class="cart-product">
@@ -121,22 +122,22 @@ function loadcart() {
           </div>
             <div class="cart-quantity">
               <div class="qnty">
-                <span class="minus" onclick="decreaseProductincart(${product.id
-          })">
+                <span class="minus" onclick="decreaseProductincart('${product._id
+          }')">
                   -
                 </span>
-                <input type="number" value="${product.incart}" id="cart${product.id
-          }" oninput= "inputcartnumber(${product.id}, this.value)"/>
-                <span class="add" onclick="increaseProductincart(${product.id})">
+                <input type="number" value="${product.incart}" id="cart${product._id
+          }" oninput= "inputcartnumber('${product._id}', this.value)"/>
+                <span class="add" onclick="increaseProductincart('${product._id}')">
                   +
                 </span>
               </div>
             </div>
             <div class="cart-price">${product.price.toLocaleString()}</div>
-            <div class="cart-total-price" id="carttotal${product.id
+            <div class="cart-total-price" id="carttotal${product._id
           }" >${product.totalPrice.toLocaleString()}</div>
             <div class="cart-delete">
-              <span class="" onclick="deleteitem(${product.id})">x</span>
+              <span class="" onclick="deleteitem('${product._id}')">x</span>
             </div>
         </div>`;
       });
@@ -165,7 +166,7 @@ numberincart();
 function inputcartnumber(id, value) {
   if (value) {
     if (parseInt(value) != 0) {
-      products[id].incart = parseInt(value);
+      products[`${id}`].incart = parseInt(value);
       localStorage.setItem(
         "honeycareproduct",
         JSON.stringify(products, null, 2)
