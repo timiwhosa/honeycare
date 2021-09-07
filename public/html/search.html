@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <style>
+        .product{
+            width: 100%;
+        }
+        section{
+            padding-top:4vw ;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="width">
+        <div class="flex">
+            <div class="brand-logo">
+                <a href="/">
+                    <img
+                    src="/img/logo/logo.png"
+                    alt="Honeycare pharmacy and Beauty Hub Logo"
+                />
+                </a>
+            </div>
+            <a href="/">
+                <div class="brand-name">
+                    <span class="green1"> Honeycare </span> 
+                    <span class="blue1"> Pharmacy and Beauty Hub </span>
+                </div>
+                </a>
+            
+        </div>
+        <h3 class="center">Search Result (<span id="numberofresult">0</span>)</h3>
+        <div class="grid-3">
+            <!-- search result -->
+        </div>
+
+        <footer>
+        <ul>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/terms">Terms and conditions</a></li>
+          <li><a href="/privacy">Privacy policy</a></li>
+        </ul>
+        <p>Copyright Honeycare</p>
+      </footer>
+    </section>
+
+    <script>
+        var data = JSON.parse(sessionStorage.getItem("searchResult"));
+        if(data && data.length>0){
+            document.getElementById("numberofresult").innerText = data.length;
+            var prodDiv = document.getElementsByClassName("grid-3")[0];
+            if(data){
+                data.forEach(product=>{
+                    // console.log(product)
+                    var hh = JSON.stringify(product)
+                    prodDiv.innerHTML +=
+                    `
+                        <div class="product">
+                        <a href="/product/${product.category}/${product.subcategory}/singleproduct/${product._id}">
+                            <div class="product-img">
+                                <img src="${product.image}" alt="honeycare pharmacy ${product.name}">
+                            </div>
+                        <div class="product-name">
+                            ${product.name}
+                        </div>
+                        <div class="product-price price">${product.price}</div>
+                        </a>
+                        <div class="addtocart-btn btn bg-green1" onclick='addtocart(${hh})'>
+                            <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
+                        </div>
+                    </div>
+                    `
+                })
+            }      
+        }
+    </script>
+    <!-- <script src="/js/general.js"></script> -->
+</body>
+</html>

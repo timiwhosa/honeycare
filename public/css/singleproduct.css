@@ -97,6 +97,8 @@ body{
     height: 60px;
     font-size: 1.5rem;
     min-width: 150px;
+    padding: 0;
+    justify-content: center;
 }
 
 /* product image div */
@@ -235,6 +237,7 @@ body{
     min-height: 75vh;
     display: flex;
     align-items: flex-end;
+    justify-content: center;
     min-width: 220px;
 }
 .main-singleproduct .singleproduct-ctn > div:nth-child(3){

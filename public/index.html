@@ -5,51 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Honeycare Pharmacy and Beauty Hub</title>
-    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/general.css" />
   </head>
   <body>
     <nav>
       <div class="nav-ctn">
         <a href="/">
           <div class="brand-name">
-            <span class="green1"> Honeycare </span> 
+            <span class="green1"> Honeycare </span>
             <span class="blue1"> Pharmacy and Beauty Hub </span>
           </div>
         </a>
         <div class="brand-logo">
           <a href="/">
             <img
-            src="/img/logo/logo.png"
-            alt="Honeycare pharmacy and Beauty Hub Logo"
-          />
+              src="/img/logo/logo.png"
+              alt="Honeycare pharmacy and Beauty Hub Logo"
+            />
           </a>
         </div>
         <div class="flex">
-            <div class="search-div">
-                    <label class="search">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="31.042" height="28.512" viewBox="0 0 31.042 28.512">
-                            <g id="Group_118" data-name="Group 118" transform="translate(1.5 1.5)">
-                                <path id="Path_1" data-name="Path 1" d="M25.816,14.119c0,5.313-4.772,9.619-10.658,9.619S4.5,19.432,4.5,14.119,9.272,4.5,15.158,4.5,25.816,8.807,25.816,14.119Z" transform="translate(-4.5 -4.5)" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-                                <path id="Path_2" data-name="Path 2" d="M34.148,33.5l-9.173-8.53" transform="translate(-6.727 -8.613)" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-                            </g>
-                        </svg>
-                    </label>
-                    <input type="search" placeholder="Cosmetics, Drugs ">
+          <div class="search-div">
+            <label class="search">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="31.042"
+                height="28.512"
+                viewBox="0 0 31.042 28.512"
+              >
+                <g
+                  id="Group_118"
+                  data-name="Group 118"
+                  transform="translate(1.5 1.5)"
+                >
+                  <path
+                    id="Path_1"
+                    data-name="Path 1"
+                    d="M25.816,14.119c0,5.313-4.772,9.619-10.658,9.619S4.5,19.432,4.5,14.119,9.272,4.5,15.158,4.5,25.816,8.807,25.816,14.119Z"
+                    transform="translate(-4.5 -4.5)"
+                    fill="none"
+                    stroke="var(--green)"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                  />
+                  <path
+                    id="Path_2"
+                    data-name="Path 2"
+                    d="M34.148,33.5l-9.173-8.53"
+                    transform="translate(-6.727 -8.613)"
+                    fill="none"
+                    stroke="var(--green)"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                  />
+                </g>
+              </svg>
+            </label>
+            <input type="search" placeholder="Cosmetics, Drugs " />
+          </div>
+          <a href="/cart">
+            <div class="nav-extra">
+              <label for="cart" class="bg-green1" id="cart-notice">1</label>
+              <img src="/img/icons/Icon feather-shopping-cart.png" alt="" />
+            </div>
+          </a>
+        </div>
 
-                </div>
-        <a href="/cart">
-          <div class="nav-extra">
-            <label for="cart" class="bg-green1" id="cart-notice">1</label>
-          <img src="/img/icons/Icon feather-shopping-cart.png" alt="" />
-        </div>
-        </a>
-        </div>
-                
-            <!-- </div> -->
-            </div>
-            <div class="float">
-                    <input type="search" placeholder="Cosmetics, Drugs" >
-            </div>
+        <!-- </div> -->
+      </div>
+      <div class="float">
+        <input type="search" placeholder="Cosmetics, Drugs" />
+      </div>
     </nav>
     <section class="width">
       <div class="header">
@@ -57,53 +85,60 @@
         <div class="header-ctn">
           <h1 class="header-text">We take care of your Health and Beauty</h1>
           <div class="header-search">
-            <form action="">
-                <label for="search"
-              ><img src="/img/icons/search-icon.png" alt=""
-            /></label>
-                <input type="search" id="search" placeholder="Cosmetics, Drugs " />
-                <button type="submit" class="btn search-btn bg-green1">Search</button type="submit">
-                </form>
+            <form action="" id="searchForm">
+              <label for="search"
+                ><img src="/img/icons/search-icon.png" alt=""
+              /></label>
+              <input
+                type="search"
+                id="search"
+                placeholder="Cosmetics, Drugs "
+               required/>
+              <button class="btn search-btn bg-green1">Search</button>
+            </form>
           </div>
         </div>
       </div>
       <div class="brands bg-green1">
-          <div class="brand-ctn">
-              <span>Brands:</span>
-              <ul class="brands-brand">
-                <li><img src="/img/brands/brand1.png" alt=""></li>
-                <li><img src="/img/brands/brand1.png" alt=""></li>
-                <li><img src="/img/brands/brand1.png" alt=""></li>
-                <li><img src="/img/brands/brand1.png" alt=""></li>
-                <li><img src="/img/brands/brand1.png" alt=""></li>
-              </ul>
-          </div>
+        <div class="brand-ctn">
+          <span>Brands:</span>
+          <ul class="brands-brand">
+            <li><img src="/img/brands/brand1.png" alt="" /></li>
+            <li><img src="/img/brands/brand1.png" alt="" /></li>
+            <li><img src="/img/brands/brand1.png" alt="" /></li>
+            <li><img src="/img/brands/brand1.png" alt="" /></li>
+            <li><img src="/img/brands/brand1.png" alt="" /></li>
+          </ul>
+        </div>
       </div>
 
       <div class="refill-contact grid-2">
-          <div class="refill-cta">
-              <div class="cta-text">
-                  Refill Your Prescriptions
-              </div>
-              <button type="" onclick="refill()" class="btn bg-green2">Refill it Now</button>
+        <div class="refill-cta">
+          <div class="cta-text">Refill Your Prescriptions</div>
+          <button type="" onclick="refill()" class="btn bg-green2">
+            Refill it Now
+          </button>
+        </div>
+        <div class="connect-to-pharm-cta">
+          <div class="cta-text">
+            Not Feeling Well? <br />
+            Talk to a Pharmacist For Free.
           </div>
-          <div class="connect-to-pharm-cta">
-              <div class="cta-text">
-                  Not Feeling Well? <br> Talk to a Pharmacist For Free.
-              </div>
-              <button type=""  class="btn bg-blue1" onclick="contact()">Connect Me</button>
-          </div>
+          <button type="" class="btn bg-blue1" onclick="contact()">
+            Connect Me
+          </button>
+        </div>
       </div>
 
       <div class="info">
-          <img src="/img/icons/Icon material-directions-bike.png" alt="">
-          <span class="blue1">1hour Max Delivery to anywhere in Ondo State.</span>
+        <img src="/img/icons/Icon material-directions-bike.png" alt="" />
+        <span class="blue1">1hour Max Delivery to anywhere in Ondo State.</span>
       </div>
 
       <div class="popular">
-          <h3 class="green1">Popular Products</h3>
-          <div class="scroll-section" id="popular-div">
-              <!-- <div class="product">
+        <h3 class="green1">Popular Products</h3>
+        <div class="scroll-section" id="popular-div">
+          <!-- <div class="product">
                 <a href="/product/health/category/singleproduct/productName">
                     <div class="product-img">
                           <img src="/img/product/allproducts/product1.png" alt="honeycare pharmacy fluvic acid">
@@ -145,23 +180,98 @@
                       <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
                   </div>
               </div> -->
-          </div>
+        </div>
       </div>
 
       <div class="category">
-          <h3 class="center green1">Shop By Categories</h3>
-          <div class="categories">
-              <div class=""></div>
-              <div class=""></div>
-              <div class=""></div>
-              <div class=""></div>
-              <div class=""></div>
-              <div class=""></div>
-          </div>
-      </div>
+        <h3 class="center green1">Shop By Categories</h3>
+        <div class="categories"></div>
 
+          <!--subcategory div  -->
+        <div class="subcategory">
+          <div class="cover closeSubcat"></div>
+          <div class="subcategoryCtn">
+            <div class="grid-1">
+              <ul class="grid-3" id="subcategoryUl">
+                <!-- List of subcategories for single category -->
+              </ul>
+              <button class="border-btn bg-blue1 white closeSubcat">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>
+        .subcategory {
+          position: fixed;
+          top: 0;
+          z-index: 9999999999;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100vh;
+          transition: all ease-in-out 0.5s;
+          overflow: hidden;
+          display: none;
+        }
+        .subcategory .cover {
+          width: 100%;
+          height: 100%;
+          background-color: var(--box-shadow);
+        }
+        .subcategoryCtn {
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          width: var(--width);
+          max-width: 650px;
+          height: 60vh;
+          background-color: var(--white);
+          transform: translate(-50%, -50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 0 20px var(--grey);
+          border-radius: 8px;
+        }
+        .subcategoryCtn .grid-1 {
+          width: 80%;
+        }
+        .subcategoryCtn ul.grid-3 {
+          grid-gap: 2vw;
+          text-align: center;
+        }
+        .subcategoryCtn ul.grid-3 a {
+          font-size: 1.8rem;
+          color: var(--blue);
+        }
+        .subcategoryCtn li {
+          border: 1px solid var(--blue);
+          padding: 10px;
+          min-height: 50px;
+        }
+        .subcategoryCtn ul.grid-3  a:hover  {
+          color: var(--white);
+          background-color: var(--blue);
+        }
+        .subcategory button {
+          width: 70%;
+          max-width: 80px;
+          font-size: 18px;
+          text-align: center;
+          outline: none;
+          border-radius: 8px;
+          margin: 10px auto;
+          display: block;
+          position: absolute;
+          top: -30px;
+          right: -10px;
+        }
+      </style>
       <div class="extra-products bg-blue1">
-          <!-- <div class="extra-products-ctn">
+        <!-- <div class="extra-products-ctn">
             <h4>Anti Malaria</h4>
             <div class="scroll-section">
               <div class="product">
@@ -251,87 +361,108 @@
             </div>
 
           </div> -->
-          
-        </div>
+      </div>
 
       <div class="contact">
-          <h3 class="green1 center">Talk to Us</h3>
-          <div class="social-contact">
-              <a href="/instagram">
-                <div class="">
-                  <img src="/img/social/instagram.png" alt="">
-                  <!-- instagram -->
-                </div>
-              </a>
-              <a href="/contact">
-                <div class="">
-                  <img src="/img/social/whatsapp.png" alt="">
-                  <!-- Whatsapp -->
-                </div>
-              </a>
-              <a href="tel:+2348071360049">
-                <div class="">
-                  <img src="/img/social/call.png" alt="">
-                  <!-- Phone -->
-                </div>
-              </a>
-          </div>
-          <p class="center">OR</p>
-          <div class="form">
-              <form action="" id="contact-form">
-                  <label for="name">Name</label>
-                  <input type="text"  name="" id="name" placeholder="For better Communication" required>
-                  <label for="Phone">Phone Number</label>
-                  <input type="number"  maxlength="15" minlength="10" name="" id="phone" placeholder="So that we can Reach you" required>
-                  <label for="name">Your Message</label>
-                  <textarea maxlength="1000" value="llooog" name="" id="message" cols="30" rows="6" placeholder="Talk to us" required></textarea>
-                  <button type="submit" class="bg-green1 btn">Send Message</button>
-              </form>
-              <img src="/img/advise/advise2.png" alt="">
+        <h3 class="green1 center">Talk to Us</h3>
+        <div class="social-contact">
+          <a href="/instagram">
+            <div class="">
+              <img src="/img/social/instagram.png" alt="" />
+              <!-- instagram -->
+            </div>
+          </a>
+          <a href="/contact">
+            <div class="">
+              <img src="/img/social/whatsapp.png" alt="" />
+              <!-- Whatsapp -->
+            </div>
+          </a>
+          <a href="tel:+2348071360049">
+            <div class="">
+              <img src="/img/social/call.png" alt="" />
+              <!-- Phone -->
+            </div>
+          </a>
+        </div>
+        <p class="center">OR</p>
+        <div class="form">
+          <form action="" id="contact-form">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              name=""
+              id="name"
+              placeholder="For better Communication"
+              required
+            />
+            <label for="Phone">Phone Number</label>
+            <input
+              type="number"
+              maxlength="15"
+              minlength="10"
+              name=""
+              id="phone"
+              placeholder="So that we can Reach you"
+              required
+            />
+            <label for="name">Your Message</label>
+            <textarea
+              maxlength="1000"
+              value="llooog"
+              name=""
+              id="message"
+              cols="30"
+              rows="6"
+              placeholder="Talk to us"
+              required
+            ></textarea>
+            <button type="submit" class="bg-green1 btn">Send Message</button>
+          </form>
+          <img src="/img/advise/advise2.png" alt="" />
         </div>
       </div>
 
       <footer>
-          <ul>
-              <li><a href="/contact">Contact Us</a></li>
-              <li><a href="/terms">Terms and conditions</a></li>
-              <li><a href="/privacy">Privacy policy</a></li>
-          </ul>
-          <p>Copyright Honeycare</p>
+        <ul>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/terms">Terms and conditions</a></li>
+          <li><a href="/privacy">Privacy policy</a></li>
+        </ul>
+        <p>Copyright Honeycare</p>
       </footer>
     </section>
 
     <script>
       String.prototype.escape = function () {
-            var tagtoreplace = {
-                "&": "&amp;",
-                "<": "&lt",
-                ">": "&gt",
-                "=": "",
-                "script": " ",
-                "Script": " ",
-                '"': " ",
-                "`": " "
-            };
-            return this.replace(/[&<>`=]/g, function (tag) {
-                return tagtoreplace[tag] || tag;
-            });
-        }
+        var tagtoreplace = {
+          "&": "&amp;",
+          "<": "&lt",
+          ">": "&gt",
+          "=": "",
+          script: " ",
+          Script: " ",
+          '"': " ",
+          "`": " ",
+        };
+        return this.replace(/[&<>`=]/g, function (tag) {
+          return tagtoreplace[tag] || tag;
+        });
+      };
 
-      function refill(){
-        window.location.href = "/refill"
+      function refill() {
+        window.location.href = "/refill";
       }
-      function contact(){
-        window.location.href = "/contact"
+      function contact() {
+        window.location.href = "/contact";
       }
 
-      function getpopular(data){
+      function getpopular(data) {
         var popular = document.getElementById("popular-div");
-        if(data){
-          data.forEach(product=>{
-            var hh = JSON.stringify(product)
-            popular.innerHTML +=
-              `
+        if (data) {
+          data.forEach((product) => {
+            var hh = JSON.stringify(product);
+            popular.innerHTML += `
                 <div class="product">
                 <a href="/product/${product.category}/${product.subcategory}/singleproduct/${product._id}">
                     <div class="product-img">
@@ -346,65 +477,106 @@
                       <img src="/img/icons/Icon material-add-shopping-cart.png" alt="">
                   </div>
               </div>
-              `
-          })
+              `;
+          });
         }
       }
 
-      function saveandloadcategory(data){
-        if(data){
-          localStorage.setItem("honeycareCategory", JSON.stringify(data, null, 2)
-      );
+      function saveandloadcategory(data) {
+        if (data) {
+          localStorage.setItem(
+            "honeycareCategory",
+            JSON.stringify(data, null, 2)
+          );
+          var categoryDiv = document.getElementsByClassName("categories")[0];
+          categoryDiv.innerHTML = "";
+          data[0].categories.forEach((cat) => {
+            categoryDiv.innerHTML += `<div class="" onclick="showSubcategory('${cat.name}')">${cat.name}</div>`;
+          });
         }
-        var categoryDiv = document.getElementsByClassName("categories")[0];
-        categoryDiv.innerHTML = "";
-        data[0].categories.forEach((cat)=>{
-          categoryDiv.innerHTML += `<div class="">${cat.name}</div>`
+      }
+
+      function showSubcategory(cat) {
+        var allsavedcat = JSON.parse(localStorage.getItem("honeycareCategory"));
+        if (allsavedcat && allsavedcat.length > 0) {
+          document.querySelector(".subcategory").style.display = "block";
+          allsavedcat[0].categories.filter((data) => {
+            if (data.name === cat) {
+              data.sub.forEach((d) => {
+                document.getElementById("subcategoryUl").innerHTML += `
+                  <a href="/category/${data.name}/${d}"><li>${d}</li></a>
+                `;
+              });
+            }
+          });
+        }
+      }
+
+      Object.entries(document.getElementsByClassName("closeSubcat")).forEach(element => {
+        element[1].addEventListener("click", ()=>{
+          document.querySelector(".subcategory").style.display = "none";
         })
-      }
-      
+      });
 
-      fetch("/popular").then(res=> {return res.json()})
-      .then(data=> {getpopular(data)})
-      .catch(err=>{console.error(err)});
+      fetch("/popular")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          getpopular(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
 
-      fetch("/category").then((res)=>{return res.json()}).then((data)=>{
-        if(data.status===200){
-          saveandloadcategory(data.data)
-        }else{
-          console.log(data);
-        }
-      }).catch((err)=> console.error(err))
-      
-      document.getElementById("contact-form").addEventListener("submit", contactus)
-      
-      function contactus(e){
+      fetch("/category")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data.status === 200) {
+            saveandloadcategory(data.data);
+          } else {
+            console.log(data);
+          }
+        })
+        .catch((err) => console.error(err));
+
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", contactus);
+
+      function contactus(e) {
         e.preventDefault();
-        console.log(e)
         var name = e.target[0].value.escape();
         var number = e.target[1].value;
         var message = e.target[2].value.escape();
 
-        if(name.trim().length > 4){
-          if(number.trim().length> 9 && number.trim().length< 16){
-              if(message.trim().length> 5){
-                var data = {name, number,message};
-                fetch("/contact", {
-                  method: "POST",
-                  headers: {"Content-Type": "application/json"},
-                  body: JSON.stringify(data)
-                }).then(res=> res.json()).then(message=> {alert(message.message); document.getElementById("contact-form").reset()})
-                .catch(err=>{console.error(err)});
+        if (name.trim().length > 4) {
+          if (number.trim().length > 9 && number.trim().length < 16) {
+            if (message.trim().length > 5) {
+              var data = { name, number, message };
+              fetch("/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              })
+                .then((res) => res.json())
+                .then((message) => {
+                  alert(message.message);
+                  document.getElementById("contact-form").reset();
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            } else {
+              alert("Lets hear from you, Pls speak your mind");
             }
-            else{
-              alert("Lets hear from you, Pls speak your mind")
-            }
+          } else {
+            alert("Your Details are Private, pls enter a valid phone number ");
           }
-          else{
-            alert("Your Details are Private, pls enter a valid phone number ")
-          }
-        }else{
-          alert("pls enter a valid name")
+        } else {
+          alert("pls enter a valid name");
         }
       }
     </script>

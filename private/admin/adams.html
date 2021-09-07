@@ -20,7 +20,7 @@
                 <div class="dashb-sections active" data-target="request" onclick="section(this.dataset.target)">
                     <span>Orders</span>
                 </div>
-                <div class="dashb-sections " data-target="statistics" onclick="section(this.dataset.target)">
+                <div class="dashb-sections " style="display: none;" data-target="statistics" onclick="section(this.dataset.target)">
                     <span>Statistics</span>
                 </div>
                 <div class="dashb-sections " data-target="products" onclick="section(this.dataset.target)">
@@ -28,6 +28,9 @@
                 </div>
                 <div class="dashb-sections " data-target="new-category" onclick="section(this.dataset.target)">
                     <span>New Category</span>
+                </div>
+                <div class="dashb-sections contactTab" data-target="contact" onclick="section(this.dataset.target)">
+                    <span>Contact</span>
                 </div>
             </div>
             <div class="setting dashb-sections" data-target="settings" onclick="section(this.dataset.target)">
@@ -48,8 +51,8 @@
                 <div class="flex">
                         <h3 class="center">Click on each order to view Full details</h3>
                         <div class="flex">
-                            <button class="bg-dblue white" onclick="fetchOrder('recent')">Recent</button> 
-                            <button class="bg-dgreen white" onclick="fetchOrder('delivered')">Delivered</button>
+                            <button class="bg-dblue white recent-delivered recent" onclick="fetchOrder('recent')">Recent</button> 
+                            <button class="bg-dgreen white recent-delivered" onclick="fetchOrder('delivered')">Delivered</button>
                         </div>
                 </div>
                 <section>
@@ -79,33 +82,7 @@
                 <section>
                    <div class="products-product" id="products-product">
                        <div class="products-product-left">
-                           <div class="prod">
-                                <img loading="lazy" src="/img/product/allproducts/product4.png" alt="">
-                                <div class="">
-                                    <ul>
-                                        <li class="name">Fluvic Acid</li>
-                                        <li>5000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                           <div class="prod">
-                                <img loading="lazy" src="/img/product/allproducts/product4.png" alt="">
-                                <div class="">
-                                    <ul>
-                                        <li class="name">Fluvic Acid</li>
-                                        <li>5000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                           <div class="prod">
-                                <img loading="lazy" src="/img/product/allproducts/product4.png" alt="">
-                                <div class="">
-                                    <ul>
-                                        <li class="name">Fluvic Acid</li>
-                                        <li>5000</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <!-- list all products under a particular category -->
                        </div>
                        <div class="products-product-category">
                            <h3>Categories</h3>
@@ -117,11 +94,11 @@
                        <div class="upload-text">
                             <form action="" id="upload-product" enctype="multipart/form-data">
                                 <label for="product-name">Product name</label>
-                                <input type="text" value="111" name="" id="product-name" required placeholder="what is the product called">
+                                <input type="text"  name="" id="product-name" required placeholder="what is the product called">
                                 <label for="product-price">Price</label>
-                                <input type="number" value="111" name="price" id="product-price" required placeholder="5,000">
+                                <input type="number"  name="price" id="product-price" required placeholder="5,000">
                                 <label for="product-image">Product Image</label>
-                                <input type="file" name="product-image" id="product-image" oninput="filereadscript(this)" required>
+                                <input type="file" name="product-image" id="product-image" oninput="filereadscript(this,'preview-img')" required>
                                 <label for="category">Category</label>
                                 <select name="" class="selectcategory" id="category" required>
                                     
@@ -212,6 +189,30 @@
                     </form>
                 </div>
             </div>
+            <div id="contact" class="ctn ">
+                <div class="contactMain">
+                <h3 class="center">Contact</h3>
+                <div class="contactDiv">
+                    <!-- <div class="contact-message">
+                        <ul>
+                            <li class="flex"><span>12:22pm</span> <span>12/13/2021</span> </li>
+                            <li><span class="b">name: </span>Lorem ipsum dolor sit amet, consectetur adipisicing</li>
+                            <li><span class="b">Phone:</span> 0909090909090</li>
+                            <li class="contactmessage">
+                                <span class="b">Message</span> <br>
+                                <span>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Fugit ipsam deserunt culpa minima impedit sapiente nesciunt, 
+                                voluptatum quidem error enim sequi est asperiores reprehenderit, 
+                                alias cum molestiae quasi id odit.
+                                </span>
+                            </li>
+                        </ul>
+                    </div> -->
+                </div>
+                </div>
+
+            </div>
             <div id="settings" class="ctn">
                 <div class="dummy"><span>HONEYCARE </span>PHARMACY</div>
                 <div class="dummy dm2"><span>AND BEAUTY HUB</span></div>
@@ -237,7 +238,47 @@
     <div class="overlay">
         <button type="submit" class="close">x</button>
         <div class="overlay-content">
-            
+            <!-- <div class="single-product">
+                <form action="" id="update-product" enctype="multipart/form-data" class="grid-2">
+                    <div class="single-left grid-1">
+                        <div class="ovy">
+                        <label for="product-name">Product name</label>
+                        <input type="text" value="" name="" id="product-nameEdit" required placeholder="what is the product called">
+                    
+                        <label for="product-price">Price</label>
+                        <input type="number" value="" name="price" id="product-priceEdit" required placeholder="5,000">
+                    
+                        <label for="categoryEdit">Category</label>
+                        <input type="text" name="categoryEdit" id="categoryEdit" readonly required>
+                        <label for="subcategoryEdit">SubCategory</label>
+                        <input type="text" name="subcategoryEdit" id="subcategoryEdit" readonly required>
+                    
+                        <label for="product-description">Description</label>
+                        <textarea name="" id="product-description" cols="30" rows="5" required placeholder="product Description"></textarea>
+                    
+                        <label for="ingredientsEdit">Ingredients</label>
+                        <textarea name="" id="ingredientsEdit" cols="30" rows="5" required placeholder="Ingredients"></textarea>
+                    
+                        <label for="usesEdit">Uses</label>
+                        <textarea name="" id="usesEdit" cols="30" rows="5" required placeholder="Uses"></textarea>
+                            
+                        <div class="grid-3">
+                            <button  type="reset" class="closeOverlay border-btn" onclick="deleteProduct(id)">Delete Product</button>
+                            <button type="reset" class="closeOverlay border-btn">Cancel</button>
+                            <button type="submit">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="single-right">
+                        <div class="upload-preview">
+                            <img src="" alt="" class="single-imgPreview">
+                        </div>
+                        <label for="product-image">Product Image</label>
+                        <input type="file" name="product-image" id="product-imageEdit" oninput="filereadscript(this,'single-imgPreview')" required>
+
+                    </div>                    
+                </form>
+            </div> -->
         </div>
     </div>    
     <script src="/admin/adams.js"></script>

@@ -9,6 +9,7 @@
     --blue4: #007AD0;
     --dark-blue: #083759;
     --green: #16C09B;
+    --Disabledgreen: #16c09b98;
     --green2:#4caf50;
     --box-shadow: rgba(0 0 0 / 15%);
     --red: #D60606;
@@ -144,6 +145,9 @@ h3{
 
 section >div{
     margin-bottom: 50px;
+}
+textarea{
+    resize: none;
 }
 
 /* nav */
@@ -471,6 +475,12 @@ footer ul{
     grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
 }
+.grid-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 40px;
+    width: 100%;
+}
 
 /* widths and Heights */
 .width{
@@ -581,7 +591,7 @@ nav{
     height: 20px;
     z-index: 9;
     position: absolute;
-    left: 8%;
+    left: 6%;
     top: 50%;
     transform: translate(-8%, -50%);
 }
@@ -759,11 +769,12 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.9rem;
     text-align: center;
     color: var(--white);
     font-weight: 600;
     background-color: var(--green);
+    cursor: pointer;
 }
 .extra-products{
     display: grid;
@@ -858,6 +869,48 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     margin: 0;
 }
 
+.message-show{
+    position: fixed;
+    width: 80vw;
+    max-width: 500px;
+    min-width: 100px;
+    padding: 10px;
+    height: auto;
+    top: 20%;
+    right: 10%;
+    transform: translate(10%,-20%);
+    z-index: 100000000000000000000;
+    box-shadow: 5px 5px 25px var(--box-shadow), 5px 10px 25px var(--box-shadow);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* animations */
+.lds-dual-ring {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 6px solid var(--green);
+  border-color: var(--green) transparent var(--green) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
 @media screen and (max-width: 800px){
     :root{
         --width: 90vw;
@@ -924,6 +977,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     }
     .grid-2{
         grid-template-columns: 1fr;
+    }
+    .grid-3{
+        grid-template-columns: 1fr 1fr;
     }
     .header{
         width: 100vw;
@@ -1007,6 +1063,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     }
     .category .categories >div{
         height: 12vh;
+        font-size: 1.6rem;
+        padding: 2vw;
     }
     .social-contact{
         width: auto;

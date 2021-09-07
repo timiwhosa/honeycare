@@ -106,6 +106,7 @@
       var subcategory = window.location.href.split("category/")[1].split("/")[1];
       document.getElementsByClassName("direction-cat")[0].innerHTML = category + " >";
       document.getElementsByClassName("direction-subcat")[0].innerHTML = subcategory;
+      document.getElementsByClassName("subcategory")[0].innerHTML = subcategory;
 
       function loadproduct(data){
         var productDiv = document.getElementById("prodDiv");

@@ -146,12 +146,10 @@ h2{
 }
 
 .right{
-    background-color: var(--dark-blue);
-    color: var(--white);
     padding: 40px 2vw;
 }
 .right h3{
-    color: var(--white2);
+    margin-bottom: 10px;
 }
 
 
@@ -161,14 +159,12 @@ input[type=number]{
 }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     -webkit-appearance: none;
-    display: none;
     margin: 0;
 }
 label{
     font-weight: 600;
-    font-size: 1.3rem;
-    color: var(--white2);
-    /* font-family: "nunito", Arial, Helvetica, sans-serif; */
+    font-size: 1rem;
+    font-family: "nunito", Arial, Helvetica, sans-serif;
 }
 form{
     display: grid;
@@ -178,10 +174,9 @@ form{
 }
 form input {
     border: 1px solid var(--green);
-    border: none;
     padding: 10px;
     border-radius: 4px;
-    margin: 15px 0;
+    margin: 8px 0;
     font-size: 16px;
     background-color: var(--white);
 }
@@ -222,7 +217,6 @@ form button[type=submit]:active{
 
 textarea{
     border: 1px solid var(--green);
-    border: none;
     padding: 10px;
     border-radius: 4px;
     margin: 15px 0;

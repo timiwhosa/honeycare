@@ -153,7 +153,7 @@
         Enter Details About Your Prescription so we help You get it
       </p>
       <div class="grid-2">
-        <form action="">
+        <form action="" id="refill-form">
           <label for="name">Name</label>
           <input
             type="text"
@@ -170,7 +170,7 @@
             placeholder="So that we can Reach you"
             required
           />
-          <label for="prescription-img">Your Prescription</label>
+          <label for="prescription-img">Your Prescription (jpg/png)</label>
           <input
             type="file"
             name=""
@@ -204,6 +204,40 @@
           };
         }
         reader.readAsDataURL(data.files[0]);
+      }
+
+      document.getElementById("refill-form").addEventListener("submit",uploadRefill )
+      function uploadRefill(e) {
+        // console.log(e);
+        e.preventDefault();
+        var name = e.target[0].value;
+        var phone = e.target[1].value;
+        var file = e.target[2].files[0];
+
+        var formd = new FormData();
+        formd.append("refill", file);
+        formd.append("phone", phone);
+        formd.append("name", name);
+
+        fetch(`/uploadRefill?phone=${phone}`, {
+          method: "POST",
+          headers: { "conent-type": "file" },
+          body: formd,
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then(async (data) => {
+            if (data.status === 200) {
+              document.getElementById("refill-form").reset();
+              alert(data.message);
+            } else {
+              alert(data.message);
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }
     </script>
   </body>

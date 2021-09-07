@@ -20,6 +20,68 @@ function closesearch() {
   }
 }
 
+// SEARCH section
+var allInputs = Object.entries(document.getElementsByTagName("input"));
+allInputs.forEach((input) => {
+  if (input[1].type === "search") {
+    input[1].addEventListener("keyup", (e) => {
+      if (e.keyCode === 13) {
+        search(e.target.value);
+        return false;
+    }})
+  }
+})
+
+if (
+  (document.getElementsByClassName("search-btn")[0],
+  document.getElementById("searchForm"))
+) {
+  document.getElementById("searchForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    return false;
+  });
+  document
+    .getElementsByClassName("search-btn")[0]
+    .addEventListener("pointerdown", (e) => {
+      search(e.target.parentNode[0].value);
+    });
+}
+
+function search(e) {
+  // console.log(e)
+  if(e.trim().length > 0 ){
+    fetch(`/search?input=${e}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.status === 200) {
+          savesearch(data.data);
+          window.location.href = `/search/${e}`;
+        } else {
+          promptDiv(data.message);
+        }
+      });
+  }
+}
+
+function savesearch(data){
+  sessionStorage.setItem("searchResult", JSON.stringify(data, null,2))
+};
+function promptDiv(data){
+  var suc = document.createElement("div");
+  suc.setAttribute("class", "message-show bg-green1 white");
+  suc.setAttribute("id", `searchResponse${Math.floor(Math.random())}`);
+  suc.textContent = data;
+  document.body.append(suc);
+  setTimeout(() => {
+    document.body.removeChild(suc);
+  }, 2500);
+};
+
+
+
+
 var products = JSON.parse(localStorage.getItem("honeycareproduct"));
 function addtocart(data) {
   // var products = JSON.parse(localStorage.getItem("honeycareproduct"));

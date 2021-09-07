@@ -1,10 +1,21 @@
+const { ObjectID } = require("mongodb");
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
 var orderSchema = new Schema({
+  transactionId: {
+    type: String,
+  },
+  transactionRef: {
+    type: String,
+  },
   customerDetails: {
     name: {
+      type: String,
+      required: true,
+    },
+    email: {
       type: String,
       required: true,
     },
@@ -13,7 +24,7 @@ var orderSchema = new Schema({
       required: true,
     },
     number: {
-      type: Number,
+      type: String,
       required: true,
     },
     address: {
@@ -39,20 +50,8 @@ var orderSchema = new Schema({
   },
   products: [
     {
-      id: {
-        type: Number,
-        required: true,
-      },
-      section: {
-        type: String,
-        required: true,
-      },
-      subsection: {
-        type: String,
-        required: true,
-      },
-      name: {
-        type: String,
+      _id: {
+        type: ObjectID,
         required: true,
       },
       incart: {
@@ -61,6 +60,14 @@ var orderSchema = new Schema({
       },
       price: {
         type: Number,
+        required: true,
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+      image: {
+        type: String,
         required: true,
       },
     },

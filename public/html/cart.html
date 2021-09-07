@@ -13,44 +13,72 @@
       <div class="nav-ctn">
         <a href="/">
           <div class="brand-name">
-            <span class="green1"> Honeycare </span> 
+            <span class="green1"> Honeycare </span>
             <span class="blue1"> Pharmacy and Beauty Hub </span>
           </div>
         </a>
         <div class="brand-logo">
           <a href="/">
             <img
-            src="/img/logo/logo.png"
-            alt="Honeycare pharmacy and Beauty Hub Logo"
-          />
+              src="/img/logo/logo.png"
+              alt="Honeycare pharmacy and Beauty Hub Logo"
+            />
           </a>
         </div>
         <div class="flex">
-            <div class="search-div">
-                    <label class="search">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="31.042" height="28.512" viewBox="0 0 31.042 28.512">
-                            <g id="Group_118" data-name="Group 118" transform="translate(1.5 1.5)">
-                                <path id="Path_1" data-name="Path 1" d="M25.816,14.119c0,5.313-4.772,9.619-10.658,9.619S4.5,19.432,4.5,14.119,9.272,4.5,15.158,4.5,25.816,8.807,25.816,14.119Z" transform="translate(-4.5 -4.5)" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-                                <path id="Path_2" data-name="Path 2" d="M34.148,33.5l-9.173-8.53" transform="translate(-6.727 -8.613)" fill="none" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-                            </g>
-                        </svg>
-                    </label>
-                    <input type="search" placeholder="Cosmetics, Drugs ">
+          <div class="search-div">
+            <label class="search">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="31.042"
+                height="28.512"
+                viewBox="0 0 31.042 28.512"
+              >
+                <g
+                  id="Group_118"
+                  data-name="Group 118"
+                  transform="translate(1.5 1.5)"
+                >
+                  <path
+                    id="Path_1"
+                    data-name="Path 1"
+                    d="M25.816,14.119c0,5.313-4.772,9.619-10.658,9.619S4.5,19.432,4.5,14.119,9.272,4.5,15.158,4.5,25.816,8.807,25.816,14.119Z"
+                    transform="translate(-4.5 -4.5)"
+                    fill="none"
+                    stroke="var(--green)"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                  />
+                  <path
+                    id="Path_2"
+                    data-name="Path 2"
+                    d="M34.148,33.5l-9.173-8.53"
+                    transform="translate(-6.727 -8.613)"
+                    fill="none"
+                    stroke="var(--green)"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                  />
+                </g>
+              </svg>
+            </label>
+            <input type="search" placeholder="Cosmetics, Drugs " />
+          </div>
+          <a href="/cart">
+            <div class="nav-extra">
+              <label for="cart" class="bg-green1" id="cart-notice">1</label>
+              <img src="/img/icons/Icon feather-shopping-cart.png" alt="" />
+            </div>
+          </a>
+        </div>
 
-                </div>
-        <a href="/cart">
-          <div class="nav-extra">
-            <label for="cart" class="bg-green1" id="cart-notice">1</label>
-          <img src="/img/icons/Icon feather-shopping-cart.png" alt="" />
-        </div>
-        </a>
-        </div>
-                
-            <!-- </div> -->
-            </div>
-            <div class="float">
-                    <input type="search" placeholder="Cosmetics, Drugs" >
-            </div>
+        <!-- </div> -->
+      </div>
+      <div class="float">
+        <input type="search" placeholder="Cosmetics, Drugs" />
+      </div>
     </nav>
 
     <section class="width">
@@ -65,44 +93,73 @@
               <span class="hide-on-small">Total Price</span>
             </div>
             <div class="cart-items" id="cart-items">
-              <img src="/img/advise/advise1-small.png" alt="">
+              <img src="/img/advise/advise1-small.png" alt="" />
             </div>
             <div class="cart-bottom grid-2">
-                <div class="bottom-left">
-                    <div class="border-btn" onclick="continueshopping()"> <span><</span> Continue  Shopping</div>
+              <div class="bottom-left">
+                <div class="border-btn" onclick="continueshopping()">
+                  <span><</span> Continue Shopping
                 </div>
-                <div class="bottom-right">
-                    <div class="subtotal">
-                        <span>Subtotal:</span>
-                        <div id="total">N0</div>
-                    </div>
+              </div>
+              <div class="bottom-right">
+                <div class="subtotal">
+                  <span>Subtotal:</span>
+                  <div id="total">N0</div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="right">
-            <h3>Ready to get these products?</h3>
-            <!-- <div class="btn btn-primary">Send me these</div> -->
+          <h3>Request Product?</h3>
+          <!-- <div class="btn btn-primary">Send me these</div> -->
 
-            <div class="payment">
-              <!-- <h4>Honeycare PnB Payment</h4>
+          <div class="payment">
+            <!-- <h4>Honeycare PnB Payment</h4>
               <div class="price">5,000</div>
               <div class="steps">
 
               </div> -->
-              <form action="" id="customer-details">
-                <!-- <label>Enter Delivery Details</label> -->
-                <label for="customer-name">Enter Your Name</label>
-                <input type="text" name="customer-name" required id="name" placeholder="John Doe" value="lorem">
-                <label for="customer-email">Enter Your Email</label>
-                <input type="email" name="customer-email" required id="email" placeholder="JohnDoe@gmail.com" value="JohnDoe@gmail.com">
-                <label for="customer-number">Enter Your Phone Number</label>
-                <input type="number" name="customer-number" required id="number" placeholder="080345xxxxx" value="080345">
-                <label for="customer-address">Enter Your Address</label>
-                <textarea name="customer-address" required id="address" cols="30" rows="5" placeholder="include Landmarks, state, city pls" value="080345"></textarea>
-                <button type="submit" class="">Send it Now</button>
-              </form>
-              <!-- <form action="" id="payment-form">
+            <form action="" id="customer-details">
+              <!-- <label>Enter Delivery Details</label> -->
+              <label for="customer-name">Enter Your Name</label>
+              <input
+                type="text"
+                name="customer-name"
+                required
+                id="name"
+                placeholder="John Doe"
+              />
+              <label for="customer-email">Enter Your Email</label>
+              <input
+                type="email"
+                name="customer-email"
+                required
+                id="email"
+                placeholder="honeycare@gmail.com"
+              />
+              <label for="customer-number">Enter Your Phone Number</label>
+              <input
+                type="number"
+                name="customer-number"
+                required
+                id="number"
+                placeholder="080345xxxxx"
+              />
+              <label for="customer-address">Enter Your Address</label>
+              <textarea
+                name="customer-address"
+                id="address"
+                cols="30"
+                rows="5"
+                placeholder="include Landmarks, state, city pls" required
+              ></textarea>
+              <div class="flex">
+                <div id="loader"></div>
+                <button type="submit" class="wrap">Request Products</button>
+              </div>
+            </form>
+            <!-- <form action="" id="payment-form">
                 <label>Enter card Details</label>
                 <label for="card-number">Enter card Number</label>
                 <input type="number" name="card-number" id="" placeholder="5355-XXXX-XXXX-XXXX" required>
@@ -118,7 +175,7 @@
                 </div>
                 <button type="submit" class="">Verify and Pay</button>
               </form> -->
-              <!-- <form action="" id="payment-form">
+            <!-- <form action="" id="payment-form">
                 <label class="center">OTP</label>
                 <label for="">Enter OTP code</label>
                 <input type="number" name="card-otp" id="" placeholder="3" required>
@@ -129,82 +186,277 @@
                 
                 <button type="submit" class="">Verify</button>
               </form> -->
-            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <div class="overlay">
+      <div class="cover" onclick="overlay('close')"></div>
+      <div class="confirm-payment">
+        <center><h3>Succesfully Paid</h3></center>
+        <div class="flex">
+          <div id="loader1"></div>
+          <button class="white" onclick="confirmPayment(this)">Confirm My payment</button>
+        </div>
+        
+      </div>      
+    </div>
+
+    <style>
+      .wrap{
+        width: auto;
+        white-space: nowrap;
+        max-width: 200px;
+      }
+      button.wrap:disabled{
+        background-color: var(--Disabledgreen);
+      }
+      .overlay{
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 999999999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+      .overlay .cover{
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-color: var(--box-shadow);
+        cursor: pointer;
+      }
+      .confirm-payment{
+        background-color: var(--white);
+        box-shadow: 0 0 10px var(--box-shadow);
+        display: grid;
+        min-height: 120px;
+        width: 70vw;
+        max-width: 400px;
+        padding: 2vw;
+        border-radius: 8px;
+        justify-items: center;
+        grid-gap: 20px;
+        z-index: 99;
+      }
+      .confirm-payment button{
+        background-color: var(--blue);
+        border: none;
+        cursor: pointer;
+        outline: none;
+        border-radius: 8px;
+        width: 30vw;
+        font-size: 1.2rem;
+        min-height: 50px;
+        min-width: 180px;
+        box-shadow: 5px 5px 10px var(--box-shadow),   5px 5px 10px #026fbb14,   -5px 5px 10px #16c09b1f;
+      }
+      .confirm-payment button:active{
+        box-shadow: inset 5px 5px 10px var(--box-shadow), inset  5px 5px 10px #026fbb14, inset  -5px 5px 10px #16c09b1f;
+      }
+    </style>
     <script>
       String.prototype.escape = function () {
-            var tagtoreplace = {
-                "&": "&amp;",
-                "<": "&lt",
-                ">": "&gt",
-                "=": "",
-                "script": " ",
-                "Script": " ",
-                '"': " ",
-                "`": " "
-            };
-            return this.replace(/[&<>`=]/g, function (tag) {
-                return tagtoreplace[tag] || tag;
-            });
-        }
-       
-      function continueshopping(){
+        var tagtoreplace = {
+          "&": "&amp;",
+          "<": "&lt",
+          ">": "&gt",
+          "=": "",
+          script: " ",
+          Script: " ",
+          '"': " ",
+          "`": " ",
+        };
+        return this.replace(/[&<>`=]/g, function (tag) {
+          return tagtoreplace[tag] || tag;
+        });
+      };
+
+      function continueshopping() {
         window.history.back();
       }
+
+      function loader(type,id){
+        if(type==="show"){
+          document.getElementById(id).setAttribute("class", "lds-dual-ring")
+        }else{
+          document.getElementById(id).removeAttribute("class", "lds-dual-ring")
+        }
+      }
       var products = JSON.parse(localStorage.getItem("honeycareproduct"));
-      document.getElementById("customer-details").addEventListener("submit", pay);
-      function pay(e){
+      document
+        .getElementById("customer-details")
+        .addEventListener("submit", pay);
+      function pay(e) {
         e.preventDefault();
-        if(products){
+        e.target[4].disabled = true;
+        if (products) {
           var name = e.target[0].value.escape();
           var email = e.target[1].value.escape();
           var number = e.target[2].value;
           var address = e.target[3].value.escape();
-          var productBought =  getprod();
-          if(name.trim().length > 4){
-            if(number.trim().length> 9 && number.trim().length< 16){
-                if(address.trim().length> 5){
-                  var data = {name,email,number,address,productBought};
+          var productBought = getprod();
+          if (productBought.length > 0) {
+            if (name.trim().length > 4) {
+              if (number.trim().length > 9 && number.trim().length < 16) {
+                if (address.trim().length > 5) {
+                  var data = { name, email, number, address, productBought };
+                  loader("show","loader")
                   fetch("/pay", {
                     method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify(data)
-                  }).then(res=> res.json()).then(message=> {alert(message.message); document.getElementById("customer-details").reset()})
-                  .catch(err=>{console.error(err)});
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                  })
+                    .then((res) => {return res.json()})
+                    .then((message) => {
+                      if(message.status===200){
+                        e.target[4].disabled = false;
+                        loader("hide","loader")
+                        localStorage.setItem("myorder",JSON.stringify(message,null,2))
+                        window.location.href = message.data;
+                      }
+                      // document.getElementById("customer-details").reset();
+                    })
+                    .catch((err) => {
+                      loader("hide","loader")
+                      console.error(err);
+                    });
+                } else {
+                  alert("Pls enter accurate address");
+                }
+              } else {
+                alert("Pls enter a valid phone number ");
               }
-              else{
-                alert("Pls enter accurate address")
-              }
-            }
-            else{
-              alert("Pls enter a valid phone number ")
+            } else {
+              alert("Pls enter a valid name");
             }
           }else{
-            alert("Pls enter a valid name")
+            alert("Your Cart is empty, Pls select some Products")
           }
         }
-
       }
-      function getprod(){
-
-        if(products){
+      function getprod() {
+        if (products) {
           var prod = [];
           Object.values(products).forEach((product) => {
             prod.push({
               id: product._id,
-              category: product.category,
-              subcategory: product.subcategory,
-              incart: product.incart
-            })
+              incart: product.incart,
+            });
           });
           return prod;
         }
       }
 
+      function overlay(type){
+        var overlay = document.getElementsByClassName("overlay")[0]
+        if(type==="close"){
+          overlay.style.display = "none";
+        }else{
+          overlay.style.display = "flex";
+        }
+      }
+      if(window.location.search.length>0){
+        if(window.location.href.split("&tx_ref=")[1].split("&transaction_id=").length===2){
+          overlay("open")
+        }
+      }
+      function confirmPayment(e){
+        
+        var data = JSON.parse(localStorage.getItem("myorder"));
+        var fdata = window.location.href.split("&tx_ref=")[1].split("&transaction_id=")
+        var confirm = {
+          _id: data.id,
+          reference: fdata[0],
+          verifyId: fdata[1]
+        };
+        loader("show","loader1")
+        var t=0;
+        fetch(`/verify/callback?verifyId=${confirm.verifyId}&reference=${confirm.reference}&id=${confirm._id}`,
+         {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(confirm),
+          }
+          ).then((res)=>{
+            if(res.status===200){
+              t=1
+              return res.blob()
+            }
+        }).then((data)=>{
+          loader("hide","loader1")
+          if(t===1){
+            const url = window.URL.createObjectURL(new Blob([data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'HoneycareProducts'+data.id+'.pdf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            e.disabled= false;
+            overlay("close")
+          }else{
+            alert("could'nt verify your payment, Try again")
+          }
+        }).catch((err)=>{
+          console.error(err)
+        });
+      }
+
+
     </script>
     <script src="/js/general.js"></script>
   </body>
 </html>
+
+
+
+<!-- {
+  status: 'success',
+  message: 'Transaction fetched successfully',
+  data: {
+    id: 2465086,
+    tx_ref: '61367a3ecff2543af0be218d',
+    flw_ref: 'FLW-MOCK-7067f41aa24bbc28878390a4dec53990',
+    device_fingerprint: '81f74c0e75987844013caa58d70d9ef5',
+    amount: 168685,
+    currency: 'NGN',
+    charged_amount: 168685,
+    app_fee: 2000,
+    merchant_fee: 0,
+    processor_response: 'successful',
+    auth_model: 'PIN',
+    ip: '52.209.154.143',
+    narration: 'CARD Transaction ',
+    status: 'successful',
+    payment_type: 'card',
+    created_at: '2021-09-06T20:43:39.000Z',
+    account_id: 820772,
+    card: {
+      first_6digits: '553188',
+      last_4digits: '2950',
+      issuer: ' CREDIT',
+      country: 'NIGERIA NG',
+      type: 'MASTERCARD',
+      token: 'flw-t1nf-894e90e555a57a916890ca6b231b749a-m03k',
+      expiry: '09/32'
+    },
+    meta: {
+      __CheckoutInitAddress: 'https://ravemodal-dev.herokuapp.com/v3/hosted/pay/4c2dc29206dd3ecf96bb',
+      consumer_id: '61367a3ecff2543af0be218d',
+      consumer_mac: '92a3-912ba-1192a'
+    },
+    amount_settled: 166685,
+    customer: {
+      id: 1385759,
+      name: 'lorem ',
+      phone_number: 'N/A',
+      email: 'timiwhosa@gmail.com',
+      created_at: '2021-09-06T20:43:39.000Z'
+    }
+  }
+} -->

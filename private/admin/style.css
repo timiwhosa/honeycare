@@ -72,6 +72,9 @@ h3{
 .bg-dgreen{
     background-color: var(--dark-green);
 }
+.bg-red{
+    background-color: red;
+}
 .white{
     color: var(--white);
 }
@@ -89,6 +92,9 @@ h3{
 }
 .blue{
     color: var(--blue);
+}
+.red{
+    color: red;
 }
 input[type=number]{
     -moz-appearance: textfield;
@@ -149,7 +155,7 @@ button[type=submit]{
     color: var(--white);
     box-shadow: 5px 5px 10px var(--box-shadow),   5px 5px 10px #026fbb14,   -5px 5px 10px #16c09b1f ;
 }
-form button[type=reset]{
+form button[type=reset], .border-btn{
     border: .5px solid var(--green);
     max-width: 100px;
     background-color: transparent;
@@ -164,6 +170,7 @@ textarea{
     border-radius: 4px;
     margin: 15px 0;
     font-size: 1.2rem;
+    min-height: 100px;
 }
 textarea:focus{
     border: 1px solid var(--green);
@@ -293,9 +300,14 @@ img{
 /* request */
 #request .request-products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
     grid-gap: 2vw;
-    grid-auto-rows: 90px;
+    grid-auto-rows: auto;
+    max-height: 200px;
+}
+#request .request-products  >div{
+    border: .5px solid var(--dark-blue);
+    padding: 5px;
 }
 #request >.flex{
     justify-content: space-evenly;
@@ -523,7 +535,48 @@ img{
 #new-category label{
     font-weight: 100;
 }
+/* contact */
+#contact{
+    background-color: lavender;
+}
+.contactMain{
+    padding: 2vw;
+}
+.contactMain h3{
+    font-size: 1.3rem;
+    background-color: var(--white);
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 10px var(--box-shadow);
+}
+.contactMain .contactDiv{
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr) );
+}
+.contactMain .contactDiv>div{
+    background-color: var(--white);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px var(--box-shadow);
+    line-break: anywhere;
+    /* rgba(255, 250, 250, 0.253) */
+}
 
+.contact-message ul{
+    display: grid;
+    grid-gap: 10px;
+}
+.contact-message ul li{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+}
+.contact-message ul li.contactmessage span:nth-child(3){
+    font-size: 1rem;
+}
+
+
+
+/* settings */
 #settings{
     display: flex;
     align-items: center;
@@ -603,6 +656,9 @@ img{
     width: 100%;
 }
 /* overlay types */
+.recent{
+    box-shadow: 5px 5px 10px var(--dark-blue);
+}
 .single-order{
     display: grid;
     padding: 2vw;
@@ -647,6 +703,7 @@ img{
     height: calc(70vh - 18vh);
     margin-top: 25px;
     overflow-y: scroll;
+    padding: 0 1.3vw;
 }
 
 .message-show{
@@ -662,4 +719,52 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* single product overlay */
+.single-product{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    padding: 1vw;
+}
+.single-product form{
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 0;
+}
+.grid-1{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.grid-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+.grid-3 button{
+    width: 100%;
+}
+.single-product input,.single-product textarea{
+    width: 100%;
+    max-width: 330px;
+}
+.single-product .single-left{
+    overflow: hidden;
+}
+.single-product .single-left .ovy{
+    overflow-y: scroll;
+    display: grid;
+}
+.single-product .single-right .upload-preview {
+    width: 100%;
+    height: 20vw;
+    max-width: 100%;
+    max-height: 400px;
+    min-width: 100%;
+    border: 1px solid var(--green);
+    position: relative;
+    top: 0;
 }
