@@ -1,6 +1,5 @@
 const router = (
   app,
-  conn,
   public,
   path,
   moment,
