@@ -14,7 +14,7 @@ require("dotenv/config");
 var session = require("express-session");
 
 var router = require("./utils/routes/routes");
-var conn = mongoose.connect(
+mongoose.connect(
   process.env.MONGO_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
@@ -48,7 +48,7 @@ function auth(req, res, next) {
   });
 }
 
-router(app,conn, public, path, moment, auth, Jsonparser,Urlparser);
+router(app, public, path, moment, auth, Jsonparser,Urlparser);
 
 
 app.get("/login", (req, res) => {
