@@ -15,12 +15,17 @@ var session = require("express-session");
 
 var router = require("./utils/routes/routes");
 mongoose.connect(
-  process.env.MONGO_URL || "mongodb://timiwhosa@gmail.com:/ilovejesus1@honeycare-shard-00-00.wpbbg.mongodb.net:27017,honeycare-shard-00-01.wpbbg.mongodb.net:27017,honeycare-shard-00-02.wpbbg.mongodb.net:27017/honeycare?ssl=true&replicaSet=atlas-u3b6bw-shard-0&authSource=admin&retryWrites=true&w=majority",
+  process.env.MONGO_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log("connected");
   }
 );
+var db = mongoose.connection;
+db.on("error", console.error.bind(console,"connection error:"));
+db.once("open", ()=>{
+  console.log("connected successfully")
+})
 
 var public = path.join(__dirname, "./public");
 app.use(express.static(public));
