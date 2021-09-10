@@ -775,6 +775,7 @@ const router = (
         return res.json({ message: "error occured while uploading file" });
       } else if (err) {
         // An unknown error occurred when uploading.
+        console.error(err)
         return res.json({ message: "Product and Product name exist" });
       }
       // Everything went fine.
