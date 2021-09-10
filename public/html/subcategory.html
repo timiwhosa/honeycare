@@ -102,8 +102,8 @@
     </section>
     <script src="/js/general.js"></script>
     <script>
-      var category = window.location.href.split("category/")[1].split("/")[0];
-      var subcategory = window.location.href.split("category/")[1].split("/")[1];
+      var category = window.location.href.split("category/")[1].split("/")[0].replace(/\%20/g, " ");
+      var subcategory = window.location.href.split("category/")[1].split("/")[1].replace(/\%20/g, " ");
       document.getElementsByClassName("direction-cat")[0].innerHTML = category + " >";
       document.getElementsByClassName("direction-subcat")[0].innerHTML = subcategory;
       document.getElementsByClassName("subcategory")[0].innerHTML = subcategory;
