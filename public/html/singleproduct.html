@@ -208,9 +208,9 @@
         position.parentElement.classList.add("active-accordion")
       }
 
-      var thiscategory = window.location.href.split("/product/")[1].split("/singleproduct/")[0].split("/")[0]
-      var thissubcategory = window.location.href.split("/product/")[1].split("/singleproduct/")[0].split("/")[1]
-      var thisid = window.location.href.split("/product/")[1].split("/singleproduct/")[1]
+      var thiscategory = window.location.href.split("/product/")[1].split("/singleproduct/")[0].split("/")[0].replace(/\%20/g, " ");
+      var thissubcategory = window.location.href.split("/product/")[1].split("/singleproduct/")[0].split("/")[1].replace(/\%20/g, " ");
+      var thisid = window.location.href.split("/product/")[1].split("/singleproduct/")[1];
 
 
       function loadproduct(data){
